@@ -1,6 +1,8 @@
 %  LaTeX support: latex@mdpi.com 
 %  For support, please attach all files needed for compiling as well as the log file, and specify your operating system, LaTeX version, and LaTeX editor.
 
+% see also Google doc at https://docs.google.com/document/d/1Hitne_x4s-Iivetij_XnJBoShJj95FDxYIDc6PRfBDQ/edit#heading=h.2usqgv7yajxv
+
 %=================================================================
 \documentclass[remotesensing,article,submit,pdftex,moreauthors]{Definitions/mdpi} 
 % For posting an early version of this manuscript as a preprint, you may use "preprints" as the journal and change "submit" to "accept". The document class line would be, e.g., \documentclass[preprints,article,accept,moreauthors,pdftex]{mdpi}. This is especially recommended for submission to arXiv, where line numbers should be removed before posting. For preprints.org, the editorial staff will make this change immediately prior to posting.
@@ -69,10 +71,10 @@
 
 %=================================================================
 % Full title of the paper (Capitalized)
-\Title{An Exposition of the Development of an Open-Source Wind Lidar Ontology}
+\Title{On the Development of an Open-Source Wind Lidar Ontology}
 
 % MDPI internal command: Title for citation in the left column
-\TitleCitation{An Exposition of the Development of an Open-Source Wind Lidar Ontology}
+\TitleCitation{On the Development of an Open-Source Wind Lidar Ontology}
 
 % Author Orchid ID: enter ID or remove command
 \newcommand{\orcidauthorA}{0000-0000-0000-000X} % Add \orcidA{} behind the author's name
@@ -178,83 +180,70 @@ Issues and challenges with writing the ontology are discussed.
 \section{Introduction}
 An ontology defines a common vocabulary within a domain, providing a means to share information in the domain, and includes machine-interpretable definitions of fundamental concepts and the relations among them.
 Many disciplines now develop standardised ontologies that domain experts can use to share and annotate information in their fields \cite{ref-Noy}.
-An ontology serves several purposes: sharing common understanding of the structure of information; making domain assumptions explicit; enabling reuse and analysis of domain knowledge.
+An ontology serves several purposes: sharing the common understanding of the structure of information; making the domain assumptions explicit; and, enabling reuse and analysis of the domain knowledge.
 
-Within the field of wind energy, there has been a general move towards adoption of lidar as a cost effective, self-contained and adaptable solution to wind resource measurement \cite{ref-Liu}.
-The use of wind lidars is now widely accepted within the wind energy sector and there has been an associated increase in the technological development of lidar devices and in use cases,
-and incorporation within a number of IEC standards [REF]. The interest in wind lidar has led to it becoming a research field in its own right, and as a result there has been a multitude of technical advancements and a corresponding plethoira of lidar specific concepts and terminology. This situation has given rise to the need for a system to ensure consitency and comprehension within the field.
+Many aspects of wind energy resource assessment require accurate measurement of wind speed, wind direction and turbulence. In recent years, measurement of wind speeds with lasers, based upon the lidar (Light Detection And Ranging) system, has provided a modern alternative to the meteorological mast. Wind lidar makes use of the principle of optical Doppler shift between the reference radiation and radiation backscattered by aerosol particles to measure radial wind velocities at distances up to several kilometers \cite{ref-Liu}.
+Within the field of wind energy, there has been a general move towards adoption of lidar as a cost effective, self-contained and adaptable solution to wind resource measurement.
+The use of wind lidars is now widely accepted within the wind energy sector and there has been an associated increase in the technological development of lidar devices and in use cases, and incorporation within a number of IEC standards \cite{ref-IEC61400-12-1, ref-IEC61400-50-3}.
+
+The interest in wind lidar has led to it becoming a research field in its own right, and as a result there has been a multitude of technical advancements and a corresponding plethora of lidar specific concepts and terminology. This situation has given rise to the need for a system to ensure consitency and comprehension within the field.
+Further, lidar manufacturers use a variety of different concept definitions, conventions and data formats.
+As a result, there exist many difficulties and challenges in communication and lidar knowledge transfer, which may be the case in particular for early stage researchers and engineers.
 In recognition of this, an open-source ontology has been developed with the aim of establishing an industry-wide consensus on wind lidar concepts and terminology.
 This article provides an introduction to the wind lidar ontology and gives an overview of its development, and summarises the outcomes.
 
-Motivation - why the need for ontology.
-IEA Wind Task 32/52
-How it has been created. Years of collaboration.
-Members from academia and industry.
-Info on use cases.
-pseudo code.
-Issues, challenges with writing ontology
+How to use the lidar ontology. The lidar ontology has been developed as an open-source code repository, thereby  being freely available for possible modification and redistribution by users.
+As such, users can download definitions and contribute to the lidar ontology programme.
+Consequently, the lidar ontology will be subject to ongoing development with release version numbers.
+
+The paper is structured as follows. Section \ref{sec:Methodology} provides an overview of the ontology methodology. The results are presented and discussed in Section \ref{sec:Results_and_discussion} and the conclusions and outlook are presented in Section \ref{sec:Conclusion}.
 
 
+\section{Methodology}
+\label{sec:Methodology}
+We may understand a controlled vocabulary (CV) as a collection of words for a certain domain of knowledge, ordered in a certain way. You may consider also a concept, as each term of this collection. Resource Description Framework (RDF) is a general-purpose language[citation W3C RDF Recommendations], and is commonly used to model a CV and define relationships, properties, constrains and axioms among its concepts. Therefore, RDF allows us to digitise, express and handle knowledge organisation systems in a machine-readable format. Simple Knowledge Organisation System (SKOS) offers standards to create data models for metadata, and jointly with RDF we can serve machines with standardise data organisation models.
 
-Mind Map. Subject headings: Data processing; 
+\subsection{Taxonomy}
 
-\section{Lidar Ontology}
-Lidar Ontology
-\subsection{Mind Map}
-Mind Map
+A taxonomy is a type of CV in which concepts are linked in a hierarchical order or sorted into categories. 
 
-\subsection{Terminology and Definitions}
-Terminology and Definitions
+The first step in building a lidar taxonomy is to create a list of terms, or concepts, related to the wind lidar knowledge domain. A structured categorisation of this terms according to certain premises results in a wind lidar taxonomy. 
 
-\section{Use Cases}
-Use Cases
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{MindMap.PNG}
 
-\section{Issues and Challenges}
-Issues and challenges
-
-\section{Conclusion}
-Conclusion
+\caption{First, second and third (Design) lidar  taxonomy hierarchical levels.}
+\label{tax}
+\end{figure}
 
 
-The introduction should briefly place the study in a broad context and highlight why it is important. It should define the purpose of the work and its significance. The current state of the research field should be reviewed carefully and key publications cited. Please highlight controversial and diverging hypotheses when necessary. Finally, briefly mention the main aim of the work and highlight the principal conclusions. As far as possible, please keep the introduction comprehensible to scientists outside your particular field of research. Citing a journal paper \cite{ref-journal}. Now citing a book reference \cite{ref-book1,ref-book2} or other reference types \cite{ref-unpublish,ref-communication,ref-proceeding}. Please use the command \citep{ref-thesis,ref-url} for the following MDPI journals, which use author--date citation: Administrative Sciences, Arts, Econometrics, Economies, Genealogy, Humanities, IJFS, Journal of Intelligence, Journalism and Media, JRFM, Languages, Laws, Religions, Risks, Social Sciences, Literature.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Materials and Methods}
+\subsection{Ontology }
+An ontology is another type of CV with a higher level of detailed information and stronger constrains among concepts than in a taxonomy. If we endow the lidar concepts with extended information and enable the whole data structure to be machine-readable, we uplift the taxonomy to an ontology. The wrappers sheet2rdf [citation] and ontostack[citation] have been used to be able  to orchestrate the framework necessary to deploy the lidar ontology.
 
-Materials and Methods should be described with sufficient details to allow others to replicate and build on published results. Please note that publication of your manuscript implicates that you must make all materials, data, computer code, and protocols associated with the publication available to readers. Please disclose at the submission stage any restrictions on the availability of materials or information. New methods and protocols should be described in detail while well-established methods can be briefly described and appropriately cited.
+\subsection{Implementation}
+The ontology is eventually deployed by means of a combination of a different tools, brought together using GitHub actions for an automatic compilation and deployment. The workflow is as follows: 
+\begin{description}
+    
+    \item [Input data sheet:] The input data sheet consists of a Google Sheets excel sheet stored in Google Drive. The repository  \textit{IEA-Wind-Task-32/wind-lidar-ontology} hosting the source files for the wind lidar ontology [citation] contains a template of this excel sheet as an asset. A google sheet format for the input data ease the implementation of new data and its maintenance, compare to other more complex and less intuitive machine-readable formats like RDF. The google sheet has the required format to be ultimately read and handled by sheet2rdf to be converted to an RDF vocabulary.
+    The authors have filled in the excel sheet with the lidar concepts considered, so far, the most relevant for the wind lidar community. 
+    
+    \item [sheet2rdf:] sheet2rdf builds on excel2rdf [citation] workflow and it is a GitHub repository hosting the main functions that enables the conversion of the information contained in the google sheet into machine-actionable RDF format vocabulary, following Simple Knowledge Organisation System (SKOS) standards. 
+    
+    The framework internally evaluates the quality of the SKOS concept scheme using qSKOS [citation]. As a last step, sheet2rdf framework deploys the RDF-formatted ontology to ontostack and ensures the update of the deployed ontology when the excel sheet changes.
+    
+    \item [ontostack:]
+    
+\end{description}
 
-Research manuscripts reporting large datasets that are deposited in a publicly avail-able database should specify where the data have been deposited and provide the relevant accession numbers. If the accession numbers have not yet been obtained at the time of submission, please state that they will be provided during review. They must be provided prior to publication.
+Google Sheet, Resource description framework (RDF), Simple Knowledge Organisation System (SKOS), GitHub actions to automatise the process of updating the online version of the lidar ontology. 
 
-Interventionary studies involving animals or humans, and other studies require ethical approval must list the authority that provided approval and the corresponding ethical approval code.
-\begin{quote}
-This is an example of a quote.
-\end{quote}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Results}
+\section{Results and discussion}
+\label{sec:Results_and_discussion}
+Results and discussion
 
-This section may be divided by subheadings. It should provide a concise and precise description of the experimental results, their interpretation as well as the experimental conclusions that can be drawn.
-\subsection{Subsection}
-\subsubsection{Subsubsection}
-
-Bulleted lists look like this:
-\begin{itemize}
-\item	First bullet;
-\item	Second bullet;
-\item	Third bullet.
-\end{itemize}
-
-Numbered lists can be added as follows:
-\begin{enumerate}
-\item	First item; 
-\item	Second item;
-\item	Third item.
-\end{enumerate}
-
-The text continues here. 
-
-\subsection{Figures, Tables and Schemes}
-
-All figures and tables should be cited in the main text as Figure~\ref{fig1}, Table~\ref{tab1}, Table~\ref{tab2}, etc.
+All figures and tables should be cited in the main text as Figure~\ref{fig1}, Table~\ref{tab1}, etc.
 
 \begin{figure}[H]
 \includegraphics[width=10.5 cm]{Definitions/logo-mdpi}
@@ -276,106 +265,32 @@ Entry 2		& Data			& Data\\
 \end{table}
 \unskip
 
-\begin{table}[H]
-\caption{This is a wide table.\label{tab2}}
-	\begin{adjustwidth}{-\extralength}{0cm}
-		\newcolumntype{C}{>{\centering\arraybackslash}X}
-		\begin{tabularx}{\fulllength}{CCCC}
-			\toprule
-			\textbf{Title 1}	& \textbf{Title 2}	& \textbf{Title 3}     & \textbf{Title 4}\\
-			\midrule
-			Entry 1		& Data			& Data			& Data\\
-			Entry 2		& Data			& Data			& Data \textsuperscript{1}\\
-			\bottomrule
-		\end{tabularx}
-	\end{adjustwidth}
-	\noindent{\footnotesize{\textsuperscript{1} This is a table footnote.}}
-\end{table}
+\subsection{Lidar ontology}
+Lidar ontology
 
-%\begin{listing}[H]
-%\caption{Title of the listing}
-%\rule{\columnwidth}{1pt}
-%\raggedright Text of the listing. In font size footnotesize, small, or normalsize. Preferred format: left aligned and single spaced. Preferred border format: top border line and bottom border line.
-%\rule{\columnwidth}{1pt}
-%\end{listing}
+\subsubsection{Overview}
+Overview
 
-Text.
+\subsection{Examples}
+Examples
 
-Text.
+\subsubsection{Transfer data, tools, and knowledgeOpen library}
+Example
 
-\subsection{Formatting of Mathematical Components}
+\subsubsection{Standardize input files}
+Example
 
-This is the example 1 of equation:
-\begin{linenomath}
-\begin{equation}
-a = 1,
-\end{equation}
-\end{linenomath}
-the text following an equation need not be a new paragraph. Please punctuate equations as regular text.
-%% If the documentclass option "submit" is chosen, please insert a blank line before and after any math environment (equation and eqnarray environments). This ensures correct linenumbering. The blank line should be removed when the documentclass option is changed to "accept" because the text following an equation should not be a new paragraph.
+\section{Conclusion}
+\label{sec:Conclusion}
+Conclusion
 
-This is the example 2 of equation:
-\begin{adjustwidth}{-\extralength}{0cm}
-\begin{equation}
-a = b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q + r + s + t + u + v + w + x + y + z
-\end{equation}
-\end{adjustwidth}
+\subsection{Issues and Challenges}
+Issues and challenges
+\marginpar{[AC 20.12.22] Conclusions should not introduce new material. Might be better to have a new section called "Discussion" with this }
 
-% Example of a page in landscape format (with table and table footnote).
-%\startlandscape
-%\begin{table}[H] %% Table in wide page
-%\caption{This is a very wide table.\label{tab3}}
-%	\begin{tabularx}{\textwidth}{CCCC}
-%		\toprule
-%		\textbf{Title 1}	& \textbf{Title 2}	& \textbf{Title 3}	& \textbf{Title 4}\\
-%		\midrule
-%		Entry 1		& Data			& Data			& This cell has some longer content that runs over two lines.\\
-%		Entry 2		& Data			& Data			& Data\textsuperscript{1}\\
-%		\bottomrule
-%	\end{tabularx}
-%	\begin{adjustwidth}{+\extralength}{0cm}
-%		\noindent\footnotesize{\textsuperscript{1} This is a table footnote.}
-%	\end{adjustwidth}
-%\end{table}
-%\finishlandscape
+\subsection{Outlook}
+Outlook
 
-% Example of a figure that spans the whole page width. The same concept works for tables, too.
-\begin{figure}[H]
-\begin{adjustwidth}{-\extralength}{0cm}
-\centering
-\includegraphics[width=13.5cm]{Definitions/logo-mdpi}
-\end{adjustwidth}
-\caption{This is a wide figure.\label{fig2}}
-\end{figure}  
-
-Please punctuate equations as regular text. Theorem-type environments (including propositions, lemmas, corollaries etc.) can be formatted as follows:
-%% Example of a theorem:
-\begin{Theorem}
-Example text of a theorem.
-\end{Theorem}
-
-The text continues here. Proofs must be formatted as follows:
-
-%% Example of a proof:
-\begin{proof}[Proof of Theorem 1]
-Text of the proof. Note that the phrase ``of Theorem 1'' is optional if it is clear which theorem is being referred to.
-\end{proof}
-The text continues here.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Discussion}
-
-Authors should discuss the results and how they can be interpreted from the perspective of previous studies and of the working hypotheses. The findings and their implications should be discussed in the broadest context possible. Future research directions may also be highlighted.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Conclusions}
-
-This section is not mandatory, but can be added to the manuscript if the discussion is unusually long or complex.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Patents}
-
-This section is not mandatory, but may be added if there are patents resulting from the work reported in this manuscript.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \vspace{6pt} 
@@ -467,37 +382,21 @@ All appendix sections must be cited in the main text. In the appendices, Figures
 % References, variant B: internal bibliography
 %=====================================
 \begin{thebibliography}{999}
+
 \bibitem[Author1(year)]{ref-Noy}
 Noy, N.F.; McGuinness, D.L. Ontology Development 101: A Guide to Creating Your First Ontology. Available online: https://protege.stanford.edu/publications/ontology\_development/ontology101.pdf (accessed on 14 October 2022).
-% Reference 1
+
 \bibitem[Author1(year)]{ref-Liu}
 Liu, Z.;Barlow, J. F.;Chan, P.;Fung, J. C. H.;Li, Y.;Ren, C.;Mak, H. W. L.;Ng, E., A Review of Progress and Applications of Pulsed Doppler Wind LiDARs. {\em Remote Sensing} {\bf 2019}, {\em 11}, 2522.
 
+\bibitem[Author1(year)]{ref-IEC61400-12-1}
+IEC 61400-12-1:2017, Wind power generation systems - 
+Part 12-1: Power performance measurement of electricity producing wind turbines. {\em BSI Standards Publication} {\bf 2017}.
 
-% Reference 1
-\bibitem[Author1(year)]{ref-journal}
-Author~1, T. The title of the cited article. {\em Journal Abbreviation} {\bf 2008}, {\em 10}, 142--149.
-% Reference 2
-\bibitem[Author2(year)]{ref-book1}
-Author~2, L. The title of the cited contribution. In {\em The Book Title}; Editor 1, F., Editor 2, A., Eds.; Publishing House: City, Country, 2007; pp. 32--58.
-% Reference 3
-\bibitem[Author3(year)]{ref-book2}
-Author 1, A.; Author 2, B. \textit{Book Title}, 3rd ed.; Publisher: Publisher Location, Country, 2008; pp. 154--196.
-% Reference 4
-\bibitem[Author4(year)]{ref-unpublish}
-Author 1, A.B.; Author 2, C. Title of Unpublished Work. \textit{Abbreviated Journal Name} year, \textit{phrase indicating stage of publication (submitted; accepted; in press)}.
-% Reference 5
-\bibitem[Author5(year)]{ref-communication}
-Author 1, A.B. (University, City, State, Country); Author 2, C. (Institute, City, State, Country). Personal communication, 2012.
-% Reference 6
-\bibitem[Author6(year)]{ref-proceeding}
-Author 1, A.B.; Author 2, C.D.; Author 3, E.F. Title of presentation. In Proceedings of the Name of the Conference, Location of Conference, Country, Date of Conference (Day Month Year); Abstract Number (optional), Pagination (optional).
-% Reference 7
-\bibitem[Author7(year)]{ref-thesis}
-Author 1, A.B. Title of Thesis. Level of Thesis, Degree-Granting University, Location of University, Date of Completion.
-% Reference 8
-\bibitem[Author8(year)]{ref-url}
-Title of Site. Available online: URL (accessed on Day Month Year).
+\bibitem[Author1(year)]{ref-IEC61400-50-3}
+IEC 61400-50-3, Wind energy generation systems – Part 50-3: Use of nacelle-mounted lidars for wind measurements. {\em BSI Standards Publication} {\bf 2021}.
+
+
 \end{thebibliography}
 
 % If authors have biography, please use the format below
