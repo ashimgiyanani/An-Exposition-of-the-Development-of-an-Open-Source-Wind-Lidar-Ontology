@@ -182,7 +182,7 @@ An ontology defines a common vocabulary within a domain, providing a means to sh
 Many disciplines now develop standardised ontologies that domain experts can use to share and annotate information in their fields \cite{ref-Noy}.
 An ontology serves several purposes: sharing the common understanding of the structure of information; making the domain assumptions explicit; and, enabling reuse and analysis of the domain knowledge.
 
-Many aspects of wind energy resource assessment require accurate measurement of wind speed, wind direction and turbulence. In recent years, measurement of wind speeds with lasers, based upon the lidar (Light Detection And Ranging) system, has provided a modern alternative to the meteorological mast. Wind lidar makes use of the principle of optical Doppler shift between the reference radiation and radiation backscattered by aerosol particles to measure radial wind velocities at distances up to several kilometers \cite{ref-Liu}.
+Many aspects of wind energy resource assessment and inflow characterization require accurate measurement of wind speed, wind direction and turbulence. In recent years, measurement of wind speeds with lasers, based upon the lidar (Light Detection And Ranging) system, has provided a modern alternative to the meteorological mast. Wind lidar makes use of the principle of optical Doppler shift between the reference radiation and radiation backscattered by aerosol particles to measure radial wind velocities at distances up to several kilometers \cite{ref-Liu}.
 Within the field of wind energy, there has been a general move towards adoption of lidar as a cost effective, self-contained and adaptable solution to wind resource measurement.
 The use of wind lidars is now widely accepted within the wind energy sector and there has been an associated increase in the technological development of lidar devices and in use cases, and incorporation within a number of IEC standards \cite{ref-IEC61400-12-1, ref-IEC61400-50-3}.
 
@@ -201,42 +201,46 @@ The paper is structured as follows. Section \ref{sec:Methodology} provides an ov
 
 \section{Methodology}
 \label{sec:Methodology}
-We may understand a controlled vocabulary (CV) as a collection of words for a specific domain of knowledge, ordered in a certain way. You may consider also a concept, as each term of this collection. Resource Description Framework (RDF) is a general-purpose language[citation W3C RDF Recommendations], and is commonly used to model a CV and define relationships, properties, constrains and axioms among its concepts. Therefore, RDF allows us to digitise, express and handle knowledge organisation systems in a machine-readable format. Simple Knowledge Organisation System (SKOS) offers standards to create data models for metadata, and jointly with RDF allows us to serve machines with standardise data organisation models.
+ Controlled vocabularies (CVs) allow a clear and neat representation of data sets, and we can use them to store, structure, maintain and share information. We may understand a CV as a collection of words for a specific domain of knowledge, ordered in a certain way. You may consider also a concept, as each term of this collection. Resource Description Framework (RDF) is a general-purpose language[citation W3C RDF Recommendations], and is commonly used to model a CV and define relationships, properties, constrains and axioms among its concepts. Therefore, RDF allows us to digitise, express and handle knowledge organisation systems in a machine-readable format. Simple Knowledge Organisation System (SKOS) offers standards to create data models for metadata, and jointly with RDF allows us to serve machines with standardise data organisation models.
 
 \subsection{Taxonomy}
 
-A taxonomy is a type of CV in which concepts are linked in a hierarchical order or sorted into categories. 
+A taxonomy is a type of CV in which concepts, including their descriptive metadata,  are linked in a hierarchical order or sorted into categories.
 
-The first step in building a lidar taxonomy is to create a list of terms, or concepts, related to the wind lidar knowledge domain. A structured categorisation of this terms according to certain premises results in a wind lidar taxonomy. 
+The first step in building a lidar taxonomy is to create a list of terms, or concepts, related to the wind lidar knowledge domain. To do so, authors followed the "Expert elicitation" (or "Top-down") approach (see Figure \ref{tax}) , in which experts in the relevant topics of a sector are gathered for collaborating in defining the hierarchy of terms (top topics) defining the main branches of the hierarchical  tree starting  from the broad term  i.e.  “wind lidar” down to the narrower terms[citation: IRPWind: Taxonomy and meta data for wind energy R&D]. A structured categorisation of this terms according to certain premises results in a wind lidar taxonomy. 
 
 \begin{figure}[h]
-\centering
-\includegraphics[width=12cm]{MindMap.PNG}
-
-\caption{First, second and third (Design) lidar  taxonomy hierarchical levels.}
-\label{tax}
+    \centering
+    \includegraphics[width=12cm]{MindMap.PNG}
+    
+    \caption{First, second (Design) and third lidar taxonomy hierarchical levels.}
+    \label{tax}
 \end{figure}
 
 
 \subsection{Ontology }
 An ontology is another type of CV with a higher level of detailed information and stronger constrains among concepts than in a taxonomy. If we endow the lidar concepts with extended information and enable the whole data structure to be machine-readable, we uplift the taxonomy to an ontology. The wrappers sheet2rdf [citation] and ontostack[citation] have been used to be able  to orchestrate the framework necessary to deploy the lidar ontology.
 
+
 \subsection{Implementation}
 The ontology is eventually deployed by means of a combination of a different tools, brought together using GitHub actions for an automatic compilation and deployment. The workflow is as follows: 
 \begin{description}
     
     \item [Input data sheet:] The input data sheet consists of a Google Sheets excel sheet stored in Google Drive. The repository  \textit{IEA-Wind-Task-32/wind-lidar-ontology} hosting the source files for the wind lidar ontology [citation] contains a template of this excel sheet as an asset. A google sheet format for the input data ease the implementation of new data and its maintenance, compare to other more complex and less intuitive machine-readable formats like RDF. The google sheet has the required format to be ultimately read and handled by sheet2rdf to be converted to an RDF vocabulary.
-    The authors have filled in the excel sheet with the lidar concepts considered, so far, the most relevant for the wind lidar community. 
+    The authors have filled in the excel sheet with the lidar concepts and the related descriptive metadata considered, so far, the most relevant for the wind lidar community. 
     
     \item [sheet2rdf:] sheet2rdf builds on excel2rdf [citation] workflow and it is a GitHub repository hosting the main functions that enables the conversion of the information contained in the google sheet into machine-actionable RDF format vocabulary, following Simple Knowledge Organisation System (SKOS) standards. 
     
     The framework internally evaluates the quality of the SKOS concept scheme using qSKOS [citation]. As a last step, sheet2rdf framework deploys the RDF-formatted ontology to ontostack and ensures the update of the deployed ontology when the excel sheet changes.
     
-    \item [ontostack:]
-    
+    \item [ontostack:] ontostack is a set of tools combined for the purpose of handling vocabularies and their RDF properties, as such yielded by sheet2rdf, and put them to the service of human and machines. It allows the deployment and visualisation of the wind lidar ontology. In the present case the developed wind lidar ontology is an instance of ontostack and its online visualisation is hosted by the Wind and Energy Systems Department, at the Technical University  of Denmark (DTU).
+    The ontostack workflow contains some tools like [citation: https://github.com/nikokaoja/sheet2rdf]:
+    \begin{itemize}
+        \item Jena Fuseki: a graph database
+        \item SKOSMOS: kosmos is a web-based tool providing services for accessing controlled vocabularies [citation: https://github.com/NatLibFi/Skosmos]
+        \item Tr\ae fik: an edge router responsible for proper serving of URL requests
+    \end{itemize}
 \end{description}
-
-Google Sheet, Resource description framework (RDF), Simple Knowledge Organisation System (SKOS), GitHub actions to automatise the process of updating the online version of the lidar ontology. 
 
 \marginpar{[AC 20.12.22] I suggest splitting results and discussion into separate sections.}
 \section{Results and discussion}
