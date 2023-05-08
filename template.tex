@@ -360,7 +360,7 @@ The general workflow for the demonstration is shown in Figure \ref{Ontology_work
     \label{Ontology_workflow}
 \end{figure}
 
-
+In the last step
 
 \begin{python}
 # Open the file that users download from 
@@ -420,6 +420,56 @@ The output of the get-json-concept then looks like the following block
     'type': 'skos:Concept',
     'uri': 'http://vocab.ieawindtask32.org/wind-lidar-ontology/VelocityAzimuthDisplay'}
 \end{python}
+\begin{python}
+
+# Edit local yaml file
+from fun.edit_yaml_from_ontology import edit
+edit(local_yaml,tag,fields2change,Lidar_Dictionary) 
+
+'''
+# Find the concept and parameters within the nested local
+# yaml file (dictionary like) 
+
+def find(obj,tag):
+    '
+    Function digging into the python dictionary to find the aimed concept and field to be changed 
+    '
+    if tag in obj:
+        yield obj[tag]
+    for k,v in obj.items():       
+        if isinstance(v,dict):
+            for i in find(v,tag):
+                yield i                
+
+# Open/close, edit and save the local yaml file with the updated info     
+def edit(local_yaml,tag,fields2change,Lidar_Dictionary):
+    import ruamel.yaml
+    yaml = ruamel.yaml.YAML()
+    
+    # Read local yaml file and update the desired fields with the info from 
+    # the downloaded concept  
+    with open (local_yaml,"r") as file:
+        data = yaml.load_all(file)
+        for obj in data:
+            for val in find(obj,tag):
+                for i in fields2change:
+                    if not val[i]:
+                        val[i]=Lidar_Dictionary[i]
+    
+    # Edit the desired fields of the local file
+    with open(local_yaml, "w") as file:
+        yaml.dump(obj, file)
+'''    
+\end{python}
+(...) In a last step, a local yaml file, used as an input file for a lidar simulator, is updated with info from the ontology. By selecting the fields we want to edit, the info from the ontology is incorporated into the local file. The local variable will be aligned with the ontology concept through the \texttt{Alternative Label}. The function  \texttt{edit\_yaml\_from\_ontology.edit}:
+\begin{enumerate}
+    \item reads user's lidar input yaml local  template and converts it into a python dictionary
+    \item finds, within the nested dictionary, concepts and fields aimed to be changed wich are contained in the variable \texttt{fields2change} and
+    \item updates the fields with information extracted from the downloaded ontology concept
+    
+\end{enumerate} 
+
+ The updating process preserves information contained in the local yaml file. 
 
 
 \subsection{Benefits and limitations}
