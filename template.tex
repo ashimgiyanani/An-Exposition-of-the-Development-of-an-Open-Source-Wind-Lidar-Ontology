@@ -15,6 +15,7 @@
 % Choose between the following MDPI journals:
 % acoustics, actuators, addictions, admsci, adolescents, aerospace, agriculture, agriengineering, agronomy, ai, algorithms, allergies, alloys, analytica, animals, antibiotics, antibodies, antioxidants, applbiosci, appliedchem, appliedmath, applmech, applmicrobiol, applnano, applsci, aquacj, architecture, arts, asc, asi, astronomy, atmosphere, atoms, audiolres, automation, axioms, bacteria, batteries, bdcc, behavsci, beverages, biochem, bioengineering, biologics, biology, biomass, biomechanics, biomed, biomedicines, biomedinformatics, biomimetics, biomolecules, biophysica, biosensors, biotech, birds, bloods, blsf, brainsci, breath, buildings, businesses, cancers, carbon, cardiogenetics, catalysts, cells, ceramics, challenges, chemengineering, chemistry, chemosensors, chemproc, children, chips, cimb, civileng, cleantechnol, climate, clinpract, clockssleep, cmd, coasts, coatings, colloids, colorants, commodities, compounds, computation, computers, condensedmatter, conservation, constrmater, cosmetics, covid, crops, cryptography, crystals, csmf, ctn, curroncol, currophthalmol, cyber, dairy, data, dentistry, dermato, dermatopathology, designs, diabetology, diagnostics, dietetics, digital, disabilities, diseases, diversity, dna, drones, dynamics, earth, ebj, ecologies, econometrics, economies, education, ejihpe, electricity, electrochem, electronicmat, electronics, encyclopedia, endocrines, energies, eng, engproc, ent, entomology, entropy, environments, environsciproc, epidemiologia, epigenomes, est, fermentation, fibers, fintech, fire, fishes, fluids, foods, forecasting, forensicsci, forests, foundations, fractalfract, fuels, futureinternet, futureparasites, futurepharmacol, futurephys, futuretransp, galaxies, games, gases, gastroent, gastrointestdisord, gels, genealogy, genes, geographies, geohazards, geomatics, geosciences, geotechnics, geriatrics, hazardousmatters, healthcare, hearts, hemato, heritage, highthroughput, histories, horticulturae, humanities, humans, hydrobiology, hydrogen, hydrology, hygiene, idr, ijerph, ijfs, ijgi, ijms, ijns, ijtm, ijtpp, immuno, informatics, information, infrastructures, inorganics, insects, instruments, inventions, iot, j, jal, jcdd, jcm, jcp, jcs, jdb, jeta, jfb, jfmk, jimaging, jintelligence, jlpea, jmmp, jmp, jmse, jne, jnt, jof, joitmc, jor, journalmedia, jox, jpm, jrfm, jsan, jtaer, jzbg, kidney, kidneydial, knowledge, land, languages, laws, life, liquids, literature, livers, logics, logistics, lubricants, lymphatics, machines, macromol, magnetism, magnetochemistry, make, marinedrugs, materials, materproc, mathematics, mca, measurements, medicina, medicines, medsci, membranes, merits, metabolites, metals, meteorology, methane, metrology, micro, microarrays, microbiolres, micromachines, microorganisms, microplastics, minerals, mining, modelling, molbank, molecules, mps, msf, mti, muscles, nanoenergyadv, nanomanufacturing, nanomaterials, ncrna, network, neuroglia, neurolint, neurosci, nitrogen, notspecified, nri, nursrep, nutraceuticals, nutrients, obesities, oceans, ohbm, onco, oncopathology, optics, oral, organics, organoids, osteology, oxygen, parasites, parasitologia, particles, pathogens, pathophysiology, pediatrrep, pharmaceuticals, pharmaceutics, pharmacoepidemiology, pharmacy, philosophies, photochem, photonics, phycology, physchem, physics, physiologia, plants, plasma, pollutants, polymers, polysaccharides, poultry, powders, preprints, proceedings, processes, prosthesis, proteomes, psf, psych, psychiatryint, psychoactives, publications, quantumrep, quaternary, qubs, radiation, reactions, recycling, regeneration, religions, remotesensing, reports, reprodmed, resources, rheumato, risks, robotics, ruminants, safety, sci, scipharm, seeds, sensors, separations, sexes, signals, sinusitis, skins, smartcities, sna, societies, socsci, software, soilsystems, solar, solids, sports, standards, stats, stresses, surfaces, surgeries, suschem, sustainability, symmetry, synbio, systems, taxonomy, technologies, telecom, test, textiles, thalassrep, thermo, tomography, tourismhosp, toxics, toxins, transplantology, transportation, traumacare, traumas, tropicalmed, universe, urbansci, uro, vaccines, vehicles, venereology, vetsci, vibration, viruses, vision, waste, water, wem, wevj, wind, women, world, youth, zoonoticdis 
 \usepackage{pythonhighlight}
+\usepackage{tcolorbox}
 
 %---------
 % article
@@ -352,15 +353,31 @@ GitHub tool
 In the Methodology section, we discussed the process how we established the wind lidar concepts and terminology based on the feedback from participants from different fields working in wind energy. During these discussions, we developed some tools to ease the application of metadata on datasets and allow standardisation across different application domains in wind energy. The Ontology tool is based on tools developed by the FAIR Data Collective discussed in the \ref{subsec:implementation}. The Ontology tool is available on github under the link: \href{https://github.com/PacoCosta/Extract-lidar-ontology-concepts}{https://github.com/PacoCosta/Extract-lidar-ontology-concepts} and we demonstrate an example using this tool here.
 
 The general workflow for the demonstration is shown in Figure \ref{Ontology_workflow}.
-\begin{figure}
+
+\begin{figure}[h!]
     \centering
-    \includegraphics[width=6cm]{Figures/Ontology_flow.png}
+    \includegraphics[width=\textwidth]{Figures/Ontology_flow.drawio.pdf}
     \caption{General workflow for Ontology concepts}
     \label{Ontology_workflow}
 \end{figure}
 
+The workflow is divided into the following elements:
 
+\begin{enumerate}
+    \item Search the Ontology database for a keyword (e.g. VAD).
+    \item Download the concept in form of RDF, Turtle or JSON file format.
+    \item Select the language, extract the concept into python or any other language from above-mentioned file formats.
+    \item Apply the output (metadata parameters e.g. definition, preferred Label, uri, etc.) to your application
+\end{enumerate}
 
+The \textit{Ontology Viewer} is a webserver where the definitions are stored and is hosted by DTU. The block \textit{Download an Ontology concept} refers to a user action of searching a keyword, selecting the definition and downloading this definition from the Ontology Viewer. The block \textit{Github Tool} refers to the python tool developed to extract data from the downloaded definition and making it available for further use. The block \textit{Backed Functions} refers to the python routines that help the user in fetching definitions and finally the block \textit{Output} refers to the metadata definitions output.
+
+In order to merge the Ontology with any application, there are two alternatives. In the first option, one can download specific keywords from the webserver based Ontology database in fileformats like RDF, Turtle or JSON. In the second option, a database file already existing in the Github tool can be accessed and filtered through any programming tool (e.g. Python) for specific keywords. The steps 1,2,3,4 can be set accordingly in the latter case. We describe the first step in detail here, as this is more exhaustive and provides a better overview of the steps involved.
+
+The downloaded definition file format is then read using the Github tool as referred earlier. Using the code snippets shown in the next sections, the data is fetched from the Ontology files in specific language (e.g. English). The output from the fetched data refers to the metadata parameters that describe the definition of the Ontology variable which include uri, type, alternative and preferred labels, definitions and editorial notes.
+
+\begin{tcolorbox}
+    Workflow block 2: Fetch the concept from downloaded file format
 \begin{python}
 # Open the file that users download from 
 #  (https://data.windenergy.dtu.dk/ontologies/view/ontolidar/en/)
@@ -369,7 +386,10 @@ with open(r'.\Ontology_Concepts\VAD_da', encoding='utf-8') as f:
 
 print(d)
 \end{python}
+\end{tcolorbox}
 
+\begin{tcolorbox}
+    Workflow block 3: Using the Github tool, setting input parameters
 \begin{python}
 #Getting definition of the concept
 from fun.getLabel import getLabel
@@ -387,8 +407,11 @@ Lidar_Dictionary['Preferred Label']=Preferred_Label
 Lidar_Dictionary['Alternative Label']=Alternative_Label
 print(Definition)
 \end{python}
+\end{tcolorbox}
 
-\begin{python}
+\begin{tcolorbox}
+    Workflow block 3: using the Github tool
+    \begin{python}
     # import the whole concept with main variables from json file
     path = r'../Ontology_Concepts/VAD_da'
     lang = "en"
@@ -399,12 +422,12 @@ print(Definition)
     lang = "en"
     fmt = 'ttl'
     concept_rdf = get_rdf_concept(path, lang, fmt)
-
 \end{python}
+\end{tcolorbox}
 
-The output of the get-json-concept then looks like the following block
-
-\begin{python}
+\begin{tcolorbox}
+    Workflow block 4: Output from the Github tool
+    \begin{python}
     {   'altLabel': 'VAD',
     'broader': {   'uri': 'http://vocab.ieawindtask32.org/wind-lidar-ontology/WindfieldReconstruction'},
     'inScheme': {'uri': 'http://vocab.ieawindtask32.org/wind-lidar-ontology/'},
@@ -419,6 +442,7 @@ The output of the get-json-concept then looks like the following block
     'type': 'skos:Concept',
     'uri': 'http://vocab.ieawindtask32.org/wind-lidar-ontology/VelocityAzimuthDisplay'}
 \end{python}
+\end{tcolorbox}
 
 
 \subsection{Benefits and limitations}
