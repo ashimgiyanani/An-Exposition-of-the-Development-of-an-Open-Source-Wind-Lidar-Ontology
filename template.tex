@@ -442,7 +442,9 @@ print(Definition)
     'uri': 'http://vocab.ieawindtask32.org/wind-lidar-ontology/VelocityAzimuthDisplay'}
 \end{python}
 \end{tcolorbox}
-\begin{python}
+
+\begin{tcolorbox}
+    \begin{python}
 
 # Edit local yaml file
 from fun.edit_yaml_from_ontology import edit
@@ -484,7 +486,11 @@ def edit(local_yaml,tag,fields2change,Lidar_Dictionary):
         yaml.dump(obj, file)
 '''    
 \end{python}
+\end{tcolorbox}
+
+
 (...) In a last step, a local yaml file, used as an input file for a lidar simulator, is updated with info from the ontology. By selecting the fields we want to edit, the info from the ontology is incorporated into the local file. The local variable/concept will be aligned with the ontology concept through its \texttt{Alternative Label}. The function  \texttt{edit\_yaml\_from\_ontology.edit}:
+
 \begin{enumerate}
     \item reads user's lidar input yaml local template and converts it into a python dictionary,
     \item finds, within the nested dictionary, concepts and fields aimed to be changed. Concept and targeted fields are introduced by the user. These are contained in the variable \texttt{fields2change}
