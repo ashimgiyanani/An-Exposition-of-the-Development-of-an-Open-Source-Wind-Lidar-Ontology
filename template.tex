@@ -87,7 +87,7 @@
 Dexing Liu $^{2}$,
 Aidan Keane $^{3}$\orcidC{},
 Ashim Giyanani $^{4}$,
-CarloAlberto Ratti $^{5}$
+Carlo Alberto Ratti $^{5}$
 and Andrew Clifton$^{6}$}
 
 %\longauthorlist{yes}
@@ -101,15 +101,15 @@ and Andrew Clifton$^{6}$}
 
 % Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
 \address{%
-$^{1}$ \quad Affiliation 1; e-mail@e-mail.com\\
-$^{2}$ \quad Affiliation 2; e-mail@e-mail.com\\
+$^{1}$ \quad University of Stuttgart, Allmandring 5b, 70569 Stuttgart ; costa@ifb.uni-stuttgart.de\\
+$^{2}$ \quad University of Stuttgart, Allmandring 5b, 70569 Stuttgart ; liu@ifb.uni-stuttgart.de\\
 $^{3}$ \quad Wood Renewables, Floor 2 St Vincent Plaza, 319 St Vincent Street, Glasgow, G2 5LP; aidan.keane@woodplc.com\\
 $^{4}$ \quad Affiliation 4; e-mail@e-mail.com\\
 $^{5}$ \quad Affiliation 5; e-mail@e-mail.com\\
 $^{6}$ \quad Affiliation 6; e-mail@e-mail.com}
 
 % Contact information of the corresponding author
-\corres{Correspondence: e-mail@e-mail.com; Tel.: (optional; include country code; if there are multiple corresponding authors, add author initials) +xx-xxxx-xxx-xxxx (F.L.)}
+\corres{Correspondence: costa@ifb.uni-stuttgart.de; Tel.: +49 711 685 68336}
 
 % Current address and/or shared authorship
 \firstnote{Current address: Affiliation 1b.} 
@@ -251,7 +251,7 @@ The first step in building a {\it lidar taxonomy} is to create a list of terms, 
 \begin{figure}[h]
     \centering
     \includegraphics[width=12cm]{Figures/MindMap.PNG}
-    \caption{The highest levels of the lidar taxonomy, from the broadest term ``wind lidar" to the narrower terms. First and second hierarchical levels are shown, along with one third level which has been expanded.}
+    \caption{The highest levels of the lidar taxonomy, from the broadest term ``wind lidar" to narrower terms. First and second hierarchical levels are shown, along with one third level which has been expanded.}
     \label{fig:tax}
 \end{figure}
 When the lidar concepts are endowed with extended information and their interrelationships specified, the lidar taxonomy is uplifted to a {\it lidar ontology}.
@@ -348,7 +348,6 @@ Queried information can be downloaded from the DTU server in three different for
 
 \subsection{GitHub tool}
 \label{GitTool}
-GitHub tool
 
 In the Methodology section, we discussed the process how we established the wind lidar concepts and terminology based on the feedback from participants from different fields working in wind energy. During these discussions, we developed some tools to ease the application of metadata on datasets and allow standardisation across different application domains in wind energy. The Ontology tool is based on tools developed by the FAIR Data Collective discussed in the \ref{subsec:implementation}. The Ontology tool is available on github under the link: \href{https://github.com/PacoCosta/Extract-lidar-ontology-concepts}{https://github.com/PacoCosta/Extract-lidar-ontology-concepts} and we demonstrate an example using this tool here.
 
@@ -443,6 +442,57 @@ print(Definition)
     'uri': 'http://vocab.ieawindtask32.org/wind-lidar-ontology/VelocityAzimuthDisplay'}
 \end{python}
 \end{tcolorbox}
+\begin{python}
+
+# Edit local yaml file
+from fun.edit_yaml_from_ontology import edit
+edit(local_yaml,tag,fields2change,Lidar_Dictionary) 
+
+'''
+# Find the concept and parameters within the local
+# yaml file (dictionary like) 
+
+def find(obj,tag):
+    
+    # Function digging into the (likely nested) python dictionary to find the targeted concept and field to be changed.
+    
+    if tag in obj:
+        yield obj[tag]
+    for k,v in obj.items():       
+        if isinstance(v,dict):
+            for i in find(v,tag):
+                yield i                
+
+# Open/close, edit and save the local yaml file with the updated info     
+
+def edit(local_yaml,tag,fields2change,Lidar_Dictionary):
+    import ruamel.yaml
+    yaml = ruamel.yaml.YAML()
+    
+    # Read local yaml file and update the desired fields with the info from 
+    # the downloaded concept  
+    with open (local_yaml,"r") as file:
+        data = yaml.load_all(file)
+        for obj in data:
+            for val in find(obj,tag):
+                for i in fields2change:
+                    if not val[i]:
+                        val[i]=Lidar_Dictionary[i]
+    
+    # Edit the desired fields of the local file
+    with open(local_yaml, "w") as file:
+        yaml.dump(obj, file)
+'''    
+\end{python}
+(...) In a last step, a local yaml file, used as an input file for a lidar simulator, is updated with info from the ontology. By selecting the fields we want to edit, the info from the ontology is incorporated into the local file. The local variable/concept will be aligned with the ontology concept through its \texttt{Alternative Label}. The function  \texttt{edit\_yaml\_from\_ontology.edit}:
+\begin{enumerate}
+    \item reads user's lidar input yaml local template and converts it into a python dictionary,
+    \item finds, within the nested dictionary, concepts and fields aimed to be changed. Concept and targeted fields are introduced by the user. These are contained in the variable \texttt{fields2change}
+    \item updates the fields in the local template with information extracted from the downloaded ontology concept and saves the changes. The updating process preserves information contained in the local yaml file. 
+    
+\end{enumerate} 
+
+
 
 
 \subsection{Benefits and limitations}
@@ -531,7 +581,7 @@ Written informed consent for publication must be obtained from participating pat
 
 \acknowledgments{In this section you can acknowledge any support given which is not covered by the author contribution or funding sections. This may include administrative and technical support, or donations in kind (e.g., materials used for experiments).}
 
-\conflictsofinterest{The authors declare no conflict of interest. The funders had no role in the design of the study; in the collection, analyses, or interpretation of data; in the writing of the manuscript; or in the decision to publish the~results.}
+\conflictsofinterest{The authors declare no conflict of interest. The founders had no role in the design of the study; in the collection, analyses, or interpretation of data; in the writing of the manuscript; or in the decision to publish the~results.}
 
 
 % Authors must identify and declare any personal circumstances or interest that may be perceived as inappropriately influencing the representation or interpretation of reported research results. Any role of the funders in the design of the study; in the collection, analyses or interpretation of data; in the writing of the manuscript; or in the decision to publish the results must be declared in this section. If there is no role, please state ``The funders had no role in the design of the study; in the collection, analyses, or interpretation of data; in the writing of the manuscript; or in the decision to publish the~results''.} 
