@@ -80,12 +80,13 @@
 \newcommand{\orcidauthorA}{0000-0000-0000-000X} % Add \orcidA{} behind the author's name
 %\newcommand{\orcidauthorB}{0000-0000-0000-000X} % Add \orcidB{} behind the author's name
 \newcommand{\orcidauthorC}{0000-0001-7221-9800} % Add \orcidC{} behind the author's name
+\newcommand{\orcidauthorG}{0000-0002-8397-7348}
 
 % Authors, for the paper (add full first names)
 \Author{Francisco Costa $^{1,\dagger}$\orcidA{}*,
 Dexing Liu $^{2}$,
 Aidan Keane $^{3}$\orcidC{},
-Ashim Giyanani $^{4}$,
+Ashim Giyanani $^{4}$\orcidG{},
 Carlo Alberto Ratti $^{5}$
 and Andrew Clifton$^{6}$}
 
@@ -103,15 +104,15 @@ and Andrew Clifton$^{6}$}
 $^{1}$ \quad University of Stuttgart, Allmandring 5b, 70569 Stuttgart ; costa@ifb.uni-stuttgart.de\\
 $^{2}$ \quad University of Stuttgart, Allmandring 5b, 70569 Stuttgart ; liu@ifb.uni-stuttgart.de\\
 $^{3}$ \quad Wood Renewables, Floor 2 St Vincent Plaza, 319 St Vincent Street, Glasgow, G2 5LP; aidan.keane@woodplc.com\\
-$^{4}$ \quad Affiliation 4; e-mail@e-mail.com\\
-$^{5}$ \quad Affiliation 5; e-mail@e-mail.com\\
-$^{6}$ \quad Affiliation 6; e-mail@e-mail.com}
+$^{4}$ \quad Fraunhofer IWES, 27572 Bremerhaven, Germany; ashim.giyanani@iwes.fraunhofer.de\\
+$^{5}$ \quad Enlight Renewable Energy 5; carloar@enlightenergy.eu\\
+$^{6}$ \quad Affiliation 6; andy.clifton@enviconnect.de}
 
 % Contact information of the corresponding author
 \corres{Correspondence: costa@ifb.uni-stuttgart.de; Tel.: +49 711 685 68336}
 
 % Current address and/or shared authorship
-\firstnote{Current address: Affiliation 1b.} 
+\firstnote{Current address: Affiliation 1.} 
 %\secondnote{These authors contributed equally to this work.}
 % The commands \thirdnote{} till \eighthnote{} are available for further notes
 
@@ -130,7 +131,7 @@ Issues and challenges with writing the ontology are discussed.
 }
 
 % Keywords
-\keyword{Wind Energy; Lidar; Wind Velocity Measurement; Ontology; Open-Source} 
+\keyword{Wind Energy; Lidar; Remote Sensing; Wind Velocity Measurement; Domain Knowledge; Ontology; Open-Source} 
 
 % The fields PACS, MSC, and JEL may be left empty or commented out if not applicable
 %\PACS{J0101}
@@ -189,10 +190,11 @@ Issues and challenges with writing the ontology are discussed.
 % The order of the section titles is different for some journals. Please refer to the "Instructions for Authors” on the journal homepage.
 
 \section{Introduction}
-Many aspects of wind energy resource assessment and inflow characterization require accurate measurement of wind speed, wind direction and turbulence. In recent years, measurement of wind speeds with lasers, based upon the lidar (Light Detection And Ranging) system, has provided a modern alternative to the traditional meteorological mast. Wind lidar makes use of the principle of optical Doppler shift between the reference radiation and radiation backscattered by aerosol particles to measure radial wind velocities at distances up to several kilometers \cite{ref-Liu}.
+Many aspects of wind energy resource assessment and inflow characterization require accurate measurement of wind speed, wind direction and turbulence. Wind measurement data can be provided by meteorological mast instrumentation or remote sensing devices. In recent years, measurement of wind speeds with lasers, based upon the lidar (Light Detection And Ranging) system, has provided a modern alternative to the traditional meteorological mast instrumentation. Wind lidar makes use of the principle of optical Doppler shift between the reference radiation and radiation backscattered by aerosol particles to measure radial wind velocities at distances up to several kilometers \cite{ref-Liu}.
 Within the field of wind energy, there has been a general move towards adoption of lidar as a cost effective, self-contained and adaptable solution to wind resource measurement.
 The use of wind lidars is now widely accepted within the wind energy sector and there has been an associated increase in the technological development of lidar devices and in use cases, and incorporation within a number of IEC standards \cite{ref-IEC61400-12-1, ref-IEC61400-50-3}.
 
+The development of new sensors and the accessibility of data sets are significantly transforming both the theory and practice of remote sensing.
 The interest in wind lidar has led to it becoming a research field in its own right, and as a result there has been a multitude of technical advancements and a corresponding plethora of lidar specific concepts and terminology. 
 Further, lidar manufacturers use a variety of different concept definitions, conventions and data formats.
 As a result, there exist many difficulties and challenges in communication and lidar knowledge transfer, which may be the case in particular for early stage researchers and engineers. This situation has given rise to the need for a system to ensure consistency and comprehension within the field.
@@ -213,6 +215,7 @@ This has resulted in the online publication of the latest version of wind lidar 
 The wind lidar ontology provides an introduction to the fundamental concepts and terminology relating to lidar hardware and software, lidar installation and measurement, data generation, processing, and analysis.
 The ontology provides guidelines for a common conceptual architecture for lidar design, modelling and analysis.
 The ontology includes the lidar module design according to the OpenLidar Architecture, atmospheric parameters, data configuration and measurement principles.
+The development of knowledge-driven approaches is considered to be one of the most important directions of research by the remote sensing community \cite{ref-Arvor_2019}.
 It is hoped that the ontology will play a part in the development of an industry-wide consensus on lidar concepts, and the standardization of lidar terminology.
 The ontology is well placed to facilitate reuse of the domain knowledge and collaboration amongst researchers and engineers.
 
@@ -233,8 +236,7 @@ This article provides an introduction to the wind lidar ontology, and gives an o
 \label{sec:Methodology}
 A controlled vocabulary is a carefully selected list of words and phrases within a specific domain of knowledge, which are used to tag units of information so that they may be retrieved by a search.
 Metadata may be specified in accordance with a controlled vocabulary, providing clear and concise representation of data sets, and allowing data to be structured, stored, maintained and shared in a consistent manner. 
-Each item within the controlled vocabulary may be regarded as a concept
-within the specific domain of knowledge.
+Each item within the controlled vocabulary may be regarded as a concept within the specific domain of knowledge.
 
 The Resource Description Framework (RDF) is a standard model for data interchange on the Web \cite{ref-W3C-RDF}.
 RDF is commonly used to model a controlled vocabulary and define properties, relationships, constraints and axioms among its concepts.
@@ -247,14 +249,15 @@ An ontology is a type of controlled vocabulary
 which identifies and distinguishes concepts and their relationships.
 
 The first step in building a {\it lidar taxonomy} is to create a list of terms, or concepts, related to the wind lidar knowledge domain. To do so, the authors followed the ``Expert elicitation" approach to establish a consensus position. In this approach, experts in the relevant topics gathered in a collaborative way to define the hierarchy of terms and concepts. Figure \ref{fig:tax} illustrates the highest levels of the lidar taxonomy, from the broadest term ``wind lidar" to the narrower terms \cite{ref-IRPWind}.
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=12cm]{Figures/MindMap.PNG}
     \caption{The highest levels of the lidar taxonomy, from the broadest term ``wind lidar" to narrower terms. First and second hierarchical levels are shown, along with one third level which has been expanded.}
     \label{fig:tax}
 \end{figure}
-When the lidar concepts are endowed with extended information and their interrelationships specified, the lidar taxonomy is uplifted to a {\it lidar ontology}.
 
+When the lidar concepts are endowed with extended information and their interrelationships specified, the lidar taxonomy is uplifted to a {\it lidar ontology}.
 In addition, the lidar ontology is enhanced by the creation of a machine-readable data structure.
 The wrappers sheet2rdf \cite{ref-Fiorelli2015} and Ontostack \cite{ref-OntoStack} have been used to orchestrate the framework necessary to deploy the lidar ontology. Their implementation is described in the following section.
 
@@ -469,23 +472,6 @@ def edit(local_yaml,tag,fields2change,Lidar_Dictionary):
 \end{enumerate} 
 
 
-
-
-\subsection{Benefits and limitations}
-The lidar ontology provides many benefits to the lidar community.
-The lidar ontology provides standardisation of terminology within the lidar knowledge domain, and re-use of the domain knowledge with the minimum of ambiguity.
-The lidar ontology is a versatile framework which has the adaptability to incorporate new concepts and developments within the lidar industry.
-It is anticipated that the lidar ontology will be widely used within both the lidar industry and the wider wind industry.
-The open-source framework will promote sharing of the lidar ontology and increase the possibility of collaboration through modification and enhancement of concepts and terminology. 
-The concepts and terminology to date have been established based on common usage within the industry over several decades.
-The lidar ontology framework has been developed to maximise accessibility through the use of well established standard data structures such as RDF and the gitHub software platform.
-
-Despite these recognised benefits, possible limitations of the lidar ontology should also be acknowledged.
-The software framework may represent a barrier to those users with less experience, and may prove to be difficult to integrate into existing software structures.
-Several ontologies exist within the wind energy industry and there exists the possibility that conflicts may arise in the terminology.
-A technological framework such as an ontology requires ownership and maintenance, which requires ongoing commitment to the project.
-This requires a level of funding and time resource dedicated to the lidar ontology project. 
-
 % \subsection{Examples}
 % Examples
 
@@ -509,6 +495,26 @@ The lidar ontology contains more than 200 terms and concepts with definitions, a
 The ontology has been made available in RDF data format, which provides a convenient framework to model a controlled vocabulary and define properties, relationships, constraints and axioms among its concepts.
 It is anticipated that the lidar community and industry will benefit from the lidar ontology.
 
+%\subsection{Benefits and limitations}
+Ontologies can be integrated into other knowledge infrastructure dedicated to information sharing and integration and improve sharing between remote sensing science and the fields of application. Ontologies facilitate opportunities to support interdisciplinary science through better representation and management of scientific knowledge, and wind energy science being fundamentally interdisciplinary, will undoubtedly benefit from such an innovative approach.
+The lidar ontology should be connected to upper level ontologies where possible.
+An ontology should play an important role in the articulation between knowledge- and data-driven approaches.
+Procedures to capture the knowledge should be implemented and maintained. 
+
+The lidar ontology provides many benefits to the lidar community.
+The lidar ontology provides standardisation of terminology within the lidar knowledge domain, encourages sharing of inter-domain knowledge and re-use of formalised expert domain knowledge with the minimum of ambiguity. The existence of ontologies should support good industry practices within the wind energy community.
+
+The lidar ontology is a versatile framework which has the adaptability to incorporate new concepts and developments within the lidar industry.
+It is anticipated that the lidar ontology will be widely used within both the lidar industry and the wider wind industry.
+The open-source framework will promote sharing of the lidar ontology and increase the possibility of collaboration through modification and enhancement of concepts and terminology. 
+The concepts and terminology to date have been established based on common usage within the industry over several decades.
+The lidar ontology framework has been developed to maximise accessibility through the use of well established standard data structures such as RDF and the gitHub software platform.
+
+Despite these recognised benefits, possible limitations of the lidar ontology should also be acknowledged.
+The software framework may represent a barrier to those users with less experience, and may prove to be difficult to integrate into existing software structures.
+Several ontologies exist within the wind energy industry and there exists the possibility that conflicts may arise in the terminology.
+A technological framework such as an ontology requires ownership and maintenance, which requires ongoing commitment to the project.
+This requires a level of funding and time resource dedicated to the lidar ontology project. 
 
 % Issues and challenges?
 
@@ -517,17 +523,22 @@ It is anticipated that the lidar community and industry will benefit from the li
 % ----------
 % [AC 20.12.22] introduced new section to replace / capture material from conclusions
 
-
 \section{Outlook}
 \label{sec:Outlook}
 % Carlo and Andy
     % 1. Keep ontology up to date
-    % 2. Combine with exitisting wind community ontologies (TASK37)
-Things to consider: Engagement with industry; User participation and user feedback; Future updates of the ontology, published versions; Workshops?
+    % 2. Combine with existing wind community ontologies (TASK37)
+The benefits provided to the lidar community by the lidar ontology may be enhanced through user engagement and the consolidation of the resulting outcomes, facilitated through the open-source framework.
+It is intended that the lidar ontology will be updated upon revision and improvement, the updates being published with appropriate version numbering. There is the opportunity to combine the lidar ontology with existing (and forthcoming) wind community ontologies, for example,  
+reference wind turbines (IEA Wind Task 37), wind energy digitalisation (IEA Wind Task 43). Produce collaborative domain ontologies especially dedicated to remote sensing science.
+
+There are potential opportunities for engagement with academia and the wind and lidar industry. For example, lidar manufacturers are encouraged to adopt the concepts and terminology prescribed within the ontology.
+There is the opportunity to arrange workshops for introducing and collaborating on the lidar ontology.
+
 
 \section{Acknowledgments}
-All participants, collectives and institutions that do not appear in the list of authors.
-
+%All participants, collectives and institutions that do not appear in the list of authors.
+The authors would like to thank Nikola Vasiljevi\'{c}, Julia Gottschall and Peter Clive, IEA Task 32 participants, FAIR Collective for their interest in this work.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \vspace{6pt} 
@@ -541,30 +552,39 @@ All participants, collectives and institutions that do not appear in the list of
 % \supplementary{The following supporting information can be downloaded at: \linksupplementary{s1}, Figure S1: title; Table S1: title; Video S1: title. A supporting video article is available at doi: link.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\authorcontributions{For research articles with several authors, a short paragraph specifying their individual contributions must be provided. The following statements should be used ``Conceptualization, X.X. and Y.Y.; methodology, X.X.; software, X.X.; validation, X.X., Y.Y. and Z.Z.; formal analysis, X.X.; investigation, X.X.; resources, X.X.; data curation, X.X.; writing---original draft preparation, X.X.; writing---review and editing, X.X.; visualization, X.X.; supervision, X.X.; project administration, X.X.; funding acquisition, Y.Y. All authors have read and agreed to the published version of the manuscript.'', please turn to the  \href{http://img.mdpi.org/data/contributor-role-instruction.pdf}{CRediT taxonomy} for the term explanation. Authorship must be limited to those who have contributed substantially to the work~reported.}
+\authorcontributions{
+%For research articles with several authors, a short paragraph specifying their individual contributions must be provided. The following statements should be used ``Conceptualization, X.X. and Y.Y.; methodology, X.X.; software, X.X.; validation, X.X., Y.Y. and Z.Z.; formal analysis, X.X.; investigation, X.X.; resources, X.X.; data curation, X.X.; writing---original draft preparation, X.X.; writing---review and editing, X.X.; visualization, X.X.; supervision, X.X.; project administration, X.X.; funding acquisition, Y.Y. All authors have read and agreed to the published version of the manuscript.'', please turn to the  \href{http://img.mdpi.org/data/contributor-role-instruction.pdf}{CRediT taxonomy} for the term explanation. Authorship must be limited to those who have contributed substantially to the work~reported.
+Conceptualization, F.C., D.L., A.K., A.G., C.R., and A.C.;
+methodology, F.C., D.L., A.K., A.G., C.R., and A.C.;
+software, F.C., D.L. and A.G.; investigation, F.C., D.L., A.K., A.G., C.R., and A.C.;
+writing---original draft preparation, F.C., D.L., A.K., A.G., C.R., and A.C.;
+writing---review and editing, F.C., D.L., A.K., A.G., C.R., and A.C.;
+All authors have read and agreed to the published version of the manuscript.
+}
 
 \funding{Please add: ``This research received no external funding'' or ``This research was funded by NAME OF FUNDER grant number XXX.'' and  and ``The APC was funded by XXX''. Check carefully that the details given are accurate and use the standard spelling of funding agency names at \url{https://search.crossref.org/funding}, any errors may affect your future funding.}
 
-\institutionalreview{In this section, you should add the Institutional Review Board Statement and approval number, if relevant to your study. You might choose to exclude this statement if the study did not require ethical approval. Please note that the Editorial Office might ask you for further information. Please add “The study was conducted in accordance with the Declaration of Helsinki, and approved by the Institutional Review Board (or Ethics Committee) of NAME OF INSTITUTE (protocol code XXX and date of approval).” for studies involving humans. OR “The animal study protocol was approved by the Institutional Review Board (or Ethics Committee) of NAME OF INSTITUTE (protocol code XXX and date of approval).” for studies involving animals. OR “Ethical review and approval were waived for this study due to REASON (please provide a detailed justification).” OR “Not applicable” for studies not involving humans or animals.}
+%\institutionalreview{In this section, you should add the Institutional Review Board Statement and approval number, if relevant to your study. You might choose to exclude this statement if the study did not require ethical approval. Please note that the Editorial Office might ask you for further information. Please add “The study was conducted in accordance with the Declaration of Helsinki, and approved by the Institutional Review Board (or Ethics Committee) of NAME OF INSTITUTE (protocol code XXX and date of approval).” for studies involving humans. OR “The animal study protocol was approved by the Institutional Review Board (or Ethics Committee) of NAME OF INSTITUTE (protocol code XXX and date of approval).” for studies involving animals. OR “Ethical review and approval were waived for this study due to REASON (please provide a detailed justification).” OR “Not applicable” for studies not involving humans or animals.}
 
-\informedconsent{Any research article describing a study involving humans should contain this statement. Please add ``Informed consent was obtained from all subjects involved in the study.'' OR ``Patient consent was waived due to REASON (please provide a detailed justification).'' OR ``Not applicable'' for studies not involving humans. You might also choose to exclude this statement if the study did not involve humans.
+%\informedconsent{Any research article describing a study involving humans should contain this statement. Please add ``Informed consent was obtained from all subjects involved in the study.'' OR ``Patient consent was waived due to REASON (please provide a detailed justification).'' OR ``Not applicable'' for studies not involving humans. You might also choose to exclude this statement if the study did not involve humans.
 
-Written informed consent for publication must be obtained from participating patients who can be identified (including by the patients themselves). Please state ``Written informed consent has been obtained from the patient(s) to publish this paper'' if applicable.}
+%Written informed consent for publication must be obtained from participating patients who can be identified (including by the patients themselves). Please state ``Written informed consent has been obtained from the patient(s) to publish this paper'' if applicable.}
 
 
 \dataavailability{The Lidar ontology viewer is available on:  \href{https://data.windenergy.dtu.dk/ontologies/view/ontolidar/en/}{Lidar ontology viewer}. The GitHub tool is available on github under: \href{https://github.com/PacoCosta/Extract-lidar-ontology-concepts}{GitHub tool}.} 
 % \dataavailability{In this section, please provide details regarding where data supporting reported results can be found, including links to publicly archived datasets analyzed or generated during the study. Please refer to suggested Data Availability Statements in section ``MDPI Research Data Policies'' at \url{https://www.mdpi.com/ethics}. If the study did not report any data, you might add ``Not applicable'' here.} 
 
-\acknowledgments{In this section you can acknowledge any support given which is not covered by the author contribution or funding sections. This may include administrative and technical support, or donations in kind (e.g., materials used for experiments).}
 
-\conflictsofinterest{The authors declare no conflict of interest. The founders had no role in the design of the study; in the collection, analyses, or interpretation of data; in the writing of the manuscript; or in the decision to publish the~results.}
+\conflictsofinterest{The authors declare no conflict of interest.
+%The founders had no role in the design of the study; in the collection, analyses, or interpretation of data; in the writing of the manuscript; or in the decision to publish the~results.
+}
 
 
 % Authors must identify and declare any personal circumstances or interest that may be perceived as inappropriately influencing the representation or interpretation of reported research results. Any role of the funders in the design of the study; in the collection, analyses or interpretation of data; in the writing of the manuscript; or in the decision to publish the results must be declared in this section. If there is no role, please state ``The funders had no role in the design of the study; in the collection, analyses, or interpretation of data; in the writing of the manuscript; or in the decision to publish the~results''.} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Optional
-\sampleavailability{Samples of the compounds ... are available from the authors.}
+%\sampleavailability{Samples of the compounds ... are available from the authors.}
 
 %% Only for journal Encyclopedia
 %\entrylink{The Link to this entry published on the encyclopedia platform.}
