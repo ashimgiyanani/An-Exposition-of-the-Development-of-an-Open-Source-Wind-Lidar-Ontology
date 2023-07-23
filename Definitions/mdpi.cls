@@ -68,7 +68,6 @@
 % For transition period to change back to continuous page numbers
 \def\@continuouspages{}
 \newcommand{\continuouspages}[1]{\gdef\@continuouspages{#1}}
-
 %% To choose the journal
 % All journals (website name, full name, short name, DOI abbreviation, and ISSN + choice of continuous page numbers) are defined in an extra file. 
 \input{Definitions/journalnames}
