@@ -17,6 +17,8 @@
 \usepackage{pythonhighlight}
 \usepackage{tcolorbox}
 
+% Addding a package for commenting inline
+% \usepackage[margins]{trackchanges}
 %---------
 % article
 %---------
@@ -72,49 +74,52 @@
 
 %=================================================================
 % Full title of the paper (Capitalized)
-\Title{An Ontology for Describing and Classifying Wind Lidar Concepts}
+\Title{An Ontology for Describing Wind Lidar Concepts}
 
 % MDPI internal command: Title for citation in the left column
-\TitleCitation{An Ontology for Describing and Classifying Wind Lidar Concepts}
+\TitleCitation{An Ontology for Describing Wind Lidar Concepts}
 
 % Author Orchid ID: enter ID or remove command
-\newcommand{\orcidauthorA}{0000-0000-0000-000X} % Add \orcidA{} behind the author's name
+\newcommand{\orcidauthorA}{0000-0003-1318-9677} % Add \orcidA{} behind the author's name
 %\newcommand{\orcidauthorB}{0000-0000-0000-000X} % Add \orcidB{} behind the author's name
 \newcommand{\orcidauthorC}{0000-0001-7221-9800} % Add \orcidC{} behind the author's name
 \newcommand{\orcidauthorG}{0000-0002-8397-7348}
 \newcommand{\orcidauthorL}{0000-0001-9698-5083}
 
 % Authors, for the paper (add full first names)
-\Author{Francisco Costa $^{1,\dagger}$\orcidA{}*,
-Dexing Liu $^{2}$,
-Aidan Keane $^{3}$\orcidC{},
-Ashim Giyanani $^{4}$\orcidG{},
+\Author{
+Francisco Costa $^{1}$\orcidA{}*,
+Ashim Giyanani  $^{2}$\orcidG{},
+Dexing Liu $^{3}$,
+Aidan Keane $^{4}$\orcidC{},
 Carlo Alberto Ratti $^{5}$
 and Andrew~Clifton$^{6}$\orcidL{}}
 
 %\longauthorlist{yes}
 
 % MDPI internal command: Authors, for metadata in PDF
-\AuthorNames{Francisco Costa, Dexing Liu, Aidan Keane, Ashim Giyanani, CarloAlberto Ratti and Andrew Clifton}
+\AuthorNames{Francisco Costa, Dexing Liu, Aidan Keane, Ashim Giyanani, Carlo Alberto Ratti and Andrew Clifton}
 
 % MDPI internal command: Authors, for citation in the left column
-\AuthorCitation{Costa, F.; Liu, D.; Keane, A; Giyanani, A; Ratti, C; Clifton, A.}
+\AuthorCitation{Costa, F.; Giyanani, A;  Liu, D.; Keane, A; Ratti, C; Clifton, A.}
 % If this is a Chicago style journal: Lastname, Firstname, Firstname Lastname, and Firstname Lastname.
 
 % Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
 \address{%
 $^{1}$ \quad University of Stuttgart, Allmandring 5b, 70569 Stuttgart ; costa@ifb.uni-stuttgart.de\\
-$^{2}$ \quad University of Stuttgart, Allmandring 5b, 70569 Stuttgart ; liu@ifb.uni-stuttgart.de\\
-$^{3}$ \quad Wood Renewables, Floor 2 St Vincent Plaza, 319 St Vincent Street, Glasgow, G2 5LP; aidan.keane@woodplc.com\\
-$^{4}$ \quad Fraunhofer IWES, 27572 Bremerhaven, Germany; ashim.giyanani@iwes.fraunhofer.de\\
-$^{5}$ \quad Enlight Renewable Energy 5; carloar@enlightenergy.eu\\
+
+$^{2}$ \quad Fraunhofer IWES, 27572 Bremerhaven, Germany; ashim.giyanani@iwes.fraunhofer.de\\
+
+$^{3}$ \quad University of Stuttgart, Allmandring 5b, 70569 Stuttgart ; liu@ifb.uni-stuttgart.de\\
+$^{4}$ \quad Wood Renewables, Floor 2 St Vincent Plaza, 319 St Vincent Street, Glasgow, G2 5LP; aidan.keane@woodplc.com\\
+$^{5}$ \quad Enlight Renewable Energy; carloar@enlightenergy.eu\\
 $^{6}$ \quad TGU enviConnect, TTI GmbH, Nobelstrasse 15, 70569 Stuttgart, Germany; andy.clifton@enviconnect.de}
 
 % Contact information of the corresponding author
-\corres{Correspondence: costa@ifb.uni-stuttgart.de; Tel.: +49 711 685 68336}
+\corres{Correspondence: costa@ifb.uni-stuttgart.de; Tel.: +34 691 020 173}
 
 % Current address and/or shared authorship
-\firstnote{Current address: Affiliation 1.} 
+% \firstnote{Current address: Affiliation 1.} 
 %\secondnote{These authors contributed equally to this work.}
 % The commands \thirdnote{} till \eighthnote{} are available for further notes
 
@@ -125,7 +130,7 @@ $^{6}$ \quad TGU enviConnect, TTI GmbH, Nobelstrasse 15, 70569 Stuttgart, German
 % Abstract (Do not insert blank lines, i.e. \\) 
 \abstract{
 This article reports on an open-source ontology which has been developed to establish an industry-wide consensus on wind lidar concepts and terminology.
-The article provides an introduction to the wind Lidar Ontology and gives an overview of its development, and a summary of the aims and achievements.
+The article provides an introduction to the Wind Lidar Ontology and gives an overview of its development, and a summary of the aims and achievements.
 The ontology serves both reference and educational purposes for wind energy applications and lidar technology.
 The article provides an overview of the creation process, the outcomes of the project and the proposed uses of the ontology.
 The ontology is available online and provides standardisation of terminology within the lidar knowledge domain. The open-source framework provides the basis for information sharing and integration within remote sensing science and the fields of application.
@@ -191,8 +196,8 @@ The ontology is available online and provides standardisation of terminology wit
 % The order of the section titles is different for some journals. Please refer to the "Instructions for Authors” on the journal homepage.
 
 \section{Introduction}
-Many aspects of wind energy resource assessment and inflow characterization require accurate measurement of wind speed, wind direction and turbulence. Wind measurement data can be provided by meteorological mast instrumentation or remote sensing devices. In recent years, measurement of wind speeds with lasers, based upon the lidar (Light Detection And Ranging) system, has provided a modern alternative to the traditional meteorological mast instrumentation. Wind lidar makes use of the principle of optical Doppler shift between the reference radiation and radiation backscattered by aerosol particles to measure radial wind velocities at distances up to several kilometers \cite{ref-Liu}.
-Within the field of wind energy, there has been a general move towards adoption of lidar as a cost effective, self-contained and adaptable solution to wind measurement.
+Many aspects of wind resource assessment and inflow characterization require accurate measurement of wind speed, wind direction and turbulence. Wind measurement data can be provided by meteorological mast instrumentation or remote sensing devices. In recent years, measurement of wind speeds with lasers, based upon the lidar (Light Detection And Ranging) system, has provided a modern alternative to the traditional meteorological mast instrumentation. Wind lidar makes use of the principle of optical Doppler shift between the reference radiation and radiation backscattered by aerosol particles to measure radial wind velocities at distances up to several kilometers \cite{Pena_Hasager_2010,ref-Liu, vanDooren2020,Shangguan_2022}.
+In fields such as aviation, climatology, satellite-based measurements and especially wind energy, there has been a general move towards adoption of lidar as a cost effective, self-contained and adaptable solution to wind measurement.
 The use of wind lidars is now widely accepted within the wind energy sector and there has been an associated increase in the technological development of lidar devices and in use cases, and incorporation within a number of IEC standards \cite{ref-IEC61400-12-1, ref-IEC61400-50-2, ref-IEC61400-50-3}.
 
 The development of new sensors and the accessibility of data sets are significantly transforming both the theory and practice of remote sensing.
@@ -200,105 +205,120 @@ The interest in wind lidar has led to it becoming a research field in its own ri
 Further, lidar manufacturers use a variety of different concept definitions, conventions and data formats.
 As a result, there exist many difficulties and challenges in communication and lidar knowledge transfer, which may be the case in particular for early stage researchers and engineers. This situation has given rise to the need for a system to ensure consistency and comprehension within the field.
 
-To address these issues, academia and industry have been working towards consensus and standardization, and several examples are notable:
-The global initiative project e-Wind Lidar focused on development of wind lidar community based tools and data standards, and published a lidar data form to make them Findable, Accessible, Interoperable and Reusable (FAIR) \cite{ref-FAIR}; 
-The IEA Wind TCP Task 52 (previously IEA Wind TCP Task 32) brings together researchers and industry stakeholders to collaborate on the standardization, research and development, and knowledge exchange of wind lidar \cite{ref-Clifton-Schlipf};
-The OpenLidar project \cite{clifton_andrew_2019_3414197} -- coordinated by the Stuttgart Wind Energy -- developed an architecture of an open-source remote wind sensing lidar that can be used for teaching, research, and product development.
+To address these issues, academia and industry have been working towards consensus and standardisation, and several examples are notable:
+The global initiative project e-Wind Lidar \cite{ref-e-Wind-Lidar} focused on development of wind lidar community based tools and data standards, and published a lidar data form to make them Findable, Accessible, Interoperable and Reusable (FAIR) \cite{ref-FAIR}; The IEA Wind TCP Task 52 \cite{ref-IEA-Wind-Task-52} investigates the challenges to the large-scale adoption of wind lidar and is the successor to IEA Wind TCP Task 32, which set out to identify and mitigate the barriers to the adoption of wind lidar \cite{ref-Clifton-Schlipf}. The OpenLidar project \cite{clifton_andrew_2019_3414197} -- coordinated by the Stuttgart Chair of Wind Energy -- developed an architecture of an open-source remote wind sensing lidar that can be used for teaching, research, and product development.
+\citet{Marykovskiy2023} recognised the need to create value from the data available within the wind energy domain and addressed the challenges faced by wind energy domain experts in converting data into domain knowledge, and integration with other sources of knowledge. Their work presents an extensive overview of existing wind energy domain semantic models (i.e. ontologies, taxonomies, schema, etc.) and highlights the role of knowledge engineering within the digital transformation of the wind energy sector.
 
-While these initiatives have been successful, further effort is required to capitalise on their achievements and bring further consensus and standardization within a growing lidar community.
+While these initiatives have been successful, further effort is required to capitalise on their achievements and bring further consensus and standardisation within a growing lidar community.
 In recognition of this, an open-source ontology has been developed with the aim of establishing an industry-wide consensus on wind lidar concepts and terminology and their relationships.
 An ontology defines a common vocabulary within a domain, providing a means to share information in the domain, and includes machine-interpretable definitions of fundamental concepts and the relations among them.
 Many disciplines now develop standardised ontologies that domain experts can use to share and annotate information in their fields \cite{ref-Noy}.
 An ontology serves several purposes: sharing the common understanding of the structure of information; making the domain assumptions explicit; and, enabling reuse and analysis of the domain knowledge.
 
-The wind Lidar Ontology \cite{ref-Clifton-Costa} was created as a sub-task of the IEA Wind TCP Task 32, and has been taken on by a group of academics and industry engineers.
-This has resulted in the online publication of the latest version of wind Lidar Ontology \cite{ref-OntoWeb}.
-The wind Lidar Ontology provides an introduction to the fundamental concepts and terminology relating to lidar hardware and software, lidar installation and measurement, data generation, processing, and analysis.
+The Wind Lidar Ontology \cite{ref-Clifton-Costa} was created as a sub-task of the IEA Wind TCP Task 32, and has been taken on, as already mentioned, by a multi-disciplinary group of academics and industry engineers.
+This has resulted in the online publication of the latest version of the Wind Lidar Ontology \cite{ref-IEA-Wind-Task-32-wind-lidar-ontology}.
+The Wind Lidar Ontology provides an introduction to the fundamental concepts and terminology relating to lidar hardware and software, lidar installation and measurement, data generation, processing and analysis.
 The ontology provides guidelines for a common conceptual architecture for lidar design, modelling and analysis.
 The ontology includes the lidar module design according to the OpenLidar Architecture \cite{clifton_andrew_2019_3414197}, atmospheric parameters, data configuration and measurement principles.
 The development of knowledge-driven approaches is considered to be one of the most important directions of research by the remote sensing community \cite{ref-Arvor_2019}.
-It is hoped that the ontology will play a part in the development of an industry-wide consensus on lidar concepts, and the standardization of lidar terminology.
+It is hoped that the ontology will play a part in the development of an industry-wide consensus on lidar concepts, and the standardisation of lidar terminology.
 The ontology is well placed to facilitate reuse of the domain knowledge and collaboration amongst researchers and engineers.
 
-The Lidar Ontology scope includes wind energy applications and lidar technology.
-The Lidar Ontology has been developed as an open-source code repository, with the purpose of allowing
+The Wind Lidar Ontology scope includes wind energy applications and lidar technology.
+The Wind Lidar Ontology has been developed as an open-source code repository, with the purpose of allowing
 free access to users, with options to contribute and redistribute content.
-The Lidar Ontology serves several purposes: a reference source and dictionary for users, and will be of particular
+The Wind Lidar Ontology serves several purposes: a reference source and dictionary for users, and will be of particular
 use for new entrants to the field of wind energy;
 a variable definition reference for datasets for original equipment manufacturers (OEMs) delivering data to clients;
 an input resource for wind modelling and lidar simulations.
-As an open-source code repository, the Lidar Ontology will be subject to ongoing development, with individual releases identified with release version numbers.
+As an open-source code repository, the Wind Lidar Ontology will be subject to ongoing development, with individual releases identified with release version numbers.
 The definitions are available to be downloaded from the code repository.
 
-%Previous works on Digital twins and Digitalisation has provided a platform to develop common Ontologies and Taxonomies related to fields related to wind energy. Using the Digital Twins Definition language (DTDL) and Common Information Model (CIM), an energy grid ontology was developed by Microsoft in cooperation with other industrial partners \cite{Ravi2021}. This ontology is very generic in nature and can not be applied to remote sensing using lidar for wind energy purposes. Kucuk developed OntoWind aimed at providing a consensual definition of wind energy terms, but fails to provide detailed ontology of remote sensing of the atmosphere terms \cite{Kucuk2018}. The data format developed as a part of The European Aerosol Research Lidar Network (EARLINET) is based on a common vocabulary agreed by the participating network, however is limited to aerosols in the atmosphere. The ESIP Lidar Cluster hosts ontologies and vocabularies for lidar-related terms in Earth science research and is open for public to add new ontologies, however most of the ontologies focus on the numerical modelling vocabularies or on electronic components of wind energy. There is a big gap between the existing ontologies listed above focused on individual aspects and the ontologies required by wind energy for atmospheric measurements using lidars.
-
 It is acknowledged that a number of related ontologies have been proposed within the wider wind science community.
-For instance, previous works on digital twins and digitalisation has provided a platform to develop common ontologies and taxonomies within fields related to wind energy. Using the Digital Twins Definition language (DTDL) and Common Information Model (CIM), an energy grid ontology was developed by Microsoft in cooperation with other industrial partners \cite{Ravi2021}.
+For instance, previous works on digital twins and digitalisation has provided a platform to develop common ontologies and taxonomies within fields related to wind energy. Using the Digital Twins Definition Language (DTDL) and Common Information Model (CIM), an energy grid ontology was developed by Microsoft in cooperation with other industrial partners \cite{Ravi2021}.
 However, this ontology is very generic in nature and is not directly applicable to remote sensing using lidar for wind energy purposes. \citet{Kucuk2018} developed OntoWind, a high-level wind energy ontology aimed at providing a consensual definition of wind energy terms, but does not provide details of remote sensing terms.
 The data format developed as a part of the European Aerosol Research Lidar Network (EARLINET) \cite{ref-EARLINET}
-is based on a common vocabulary agreed by the participating network, however is limited to atmospheric aerosols. The ESIP Lidar Cluster \cite{ref-ESIP} hosts ontologies and vocabularies for lidar-related terms in Earth science research and is open for public to contribute, however most of the ontologies focus on the numerical modelling vocabularies or on electronic aspects related to wind energy measurement.
+is based on a common vocabulary agreed by the participating network, however is limited to atmospheric aerosols. The ESIP Lidar Cluster \cite{ref-ESIP} hosts ontologies and vocabularies for lidar-related terms in Earth science research and is open for public to contribute, however most of the ontologies focus on the numerical modelling vocabularies or on electronic aspects related to wind energy measurement. 
 
-This article provides an introduction to the wind Lidar Ontology, and gives an overview of its structure and development. Section \ref{sec:Methodology} provides an overview of the ontology methodology. The results are presented in Section \ref{sec:Results} and are discussed in Section \ref{sec:Discussion}. The general outlook for future applications is presented in Section \ref{sec:Outlook}.
-
+It is intended that the development of the Wind Lidar Ontology addresses the aforementioned perceived issues and challenges relating to lidar knowledge within the wind lidar field.
+This article provides an introduction to the Wind Lidar Ontology, and gives an overview of its structure and development. Section \ref{sec:Methodology} provides an overview of the ontology methodology. The results are presented in Section \ref{sec:Results} and are discussed in Section \ref{sec:Discussion}. The general outlook for future applications is presented in Section \ref{sec:Outlook}.
 
 \section{Methodology}
 \label{sec:Methodology}
-The structures underlying the construction and development of the Lidar Ontology are outlined.
-It is important to use well-defined formats to document and maintain an ontology. These formats should ideally be a mixture of human- and machine-readable formats that can be presented to users via different interfaces, as required. In the current context, this is achieved using the Resource Description Framework (RDF) and the Simple Knowledge Organisation System (SKOS).
+The processes and structures underlying the construction and development of the Wind Lidar Ontology are outlined in this section. 
 
-% original writing - reinstated by AK
-A {\it controlled vocabulary} (CV) is a carefully selected list of terms within a specific domain of knowledge, which are used to tag units of information so that they may be retrieved by a search.
-Metadata may be specified in accordance with a CV, providing clear and concise representation of data sets, and allowing data to be structured, stored, maintained and shared in a consistent manner. 
-Each item within the CV may be regarded as a concept within the specific domain of knowledge.
+In view of the need to establish an industry-wide consensus on wind lidar concepts and terminology
+and their relationships, the IEA Wind TCP Task 52 and,
+particularly the Wind Lidar Ontology Working Group \cite{ref-IEA-Wind-Task-52-OntologyGroup}
+brought together a variety of researchers and industry stakeholders to collaborate on the
+standardisation of lidar knowledge. The core team was assembled with experts possessing
+diverse backgrounds within related domains, yet unified in purpose, to foster a synergistic collaboration.
+This assemblage comprises representatives from the Fair Data Collective initiative, industrial entities,
+and academic institutions including the Stuttgart Wind Energie (SWE) institute at the University
+of Stuttgart and the Fraunhofer Institute for Wind Energy Systems (IWES). Tasked in accordance with
+their respective proficiencies, these stakeholders collectively contributed to the development of
+a comprehensive framework, the conceptualization of the ontology, and the delineation of lidar concepts.
+This multi-disciplinary approach allowed for enrichment from diverse perspectives,
+collaboratively addressing the varied needs of industry and academia encountered during the project. 
 
-% DL rephrased
-%This study employs a controlled vocabulary (CV) which entails the use of a defined set of terms and phrases pertaining to lidar knowledge domain. The chosen terms are employed to tag units of information, facilitating their retrieval during a search. The metadata is structured according to this CV, enabling a clear representation of our data sets and fostering consistency in data storage, maintenance, and sharing. Each term within this CV serves as a concept within the aforementioned knowledge domain. 
+The Wind Lidar Ontology Working Group carried out the following steps to develop
+the Wind Lidar Ontology:
+\begin{itemize}
+    \item Determine the optimal data model format for saving vocabularies and ensuring accessibility.
+    \item Populate the concepts and definitions during collaborative discussions.
+    \item Translate the concept definitions into a number of languages.
+    \item Provide open-source tools to facilitate dissemination within the wider community.
+\end{itemize}
 
 
-% original writing  - reinstated by AK
-RDF is a standard model for data interchange on the Web \cite{ref-W3C-RDF}.
-RDF is commonly used to model a CV and define properties, relationships, constraints and axioms among its concepts.
-RDF, therefore offers the opportunity to digitise, express and handle knowledge organisation systems in a machine-readable format.
-SKOS \cite{ref-W3C-SKOS} offers standards to create data models for metadata, and jointly with RDF facilitates the provision of standardise data organisation models to server machines.
+\subsection{Data model format}
+Well-defined data models were employed in consensus to document and maintain the ontology.
+These data models should ideally be a mixture of human- and machine-readable data models that can be presented to users via different interfaces, as required. In the current context, this is achieved using the Resource Description Framework (RDF) \cite{ref-W3C-RDF} and the Simple Knowledge Organisation System (SKOS) \cite{ref-W3C-SKOS}.
 
-% DL rephrased
-%It is important to use well-defined formats to document and maintain an ontology. These formats should ideally be a mixture of human- and machine-readable formats that can be presented to users via different interfaces, as required. To do this, we use the Resource Description Framework (RDF) and the Simple Knowledge Organisation System (SKOS). The RDF, a standard model for data interchange on the Web, is used to model the CV and define the properties, relationships, constraints, and axioms among its concepts \cite{ref-W3C-RDF}. Concurrently, we utilize the SKOS to establish data models for metadata \cite{ref-W3C-SKOS}. The combination of RDF and SKOS provides a standardized data organization model that is machine-readable. 
+A {\it controlled vocabulary} is a carefully selected list of terms within a specific domain of knowledge, which are used to tag units of information so that they may be retrieved by a search.
+Metadata may be specified in accordance with a controlled vocabulary, providing clear and concise representation of data sets, and allowing data to be structured, stored, maintained and shared in a consistent manner. Each item within the controlled vocabulary may be regarded as a concept within the specific domain of knowledge.
 
-\subsection{Taxonomy and ontology}
-A {\it taxonomy} is a type of CV in which concepts are related in a hierarchical order or sorted into categories. An ontology is a type of CV which identifies and distinguishes concepts and their relationships.
+RDF is a standard model for data interchange on the Web. It is commonly used to model a controlled vocabulary and define properties, relationships, constraints and axioms among its concepts. It therefore offers the opportunity to digitalise, express and handle knowledge organisation systems in a machine-readable format. Similarly, SKOS offers standards to create data models for metadata, and jointly with RDF facilitates the provision of standardised data organisation models to server machines.
+
+A {\it taxonomy} is a type of controlled vocabulary in which concepts are related in a hierarchical order or sorted into categories. An ontology is a type of controlled vocabulary which identifies and distinguishes concepts and their relationships.
 
 The first step in building a {\it lidar taxonomy} is to create a list of terms, or concepts, related to the wind lidar knowledge domain. To do so, the authors followed the "expert elicitation" approach to establish a consensus position. In this approach, experts in the relevant topics gathered in a collaborative way to define the hierarchy of terms and concepts \cite{ref-IRPWind}. Figure \ref{fig:tax} illustrates the highest levels of the lidar taxonomy, from the broadest term "wind lidar" to the narrower terms.
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
-    \includegraphics[width=12cm]{Figures/MindMap.PNG}
+    \includegraphics[width=\textwidth]{Figures/MindMap.PNG}
     \caption{The highest levels of the lidar taxonomy, from the broadest term "wind lidar" to narrower terms. First and second hierarchical levels are shown, along with one third level (under "Design") which has been expanded.}
     \label{fig:tax}
 \end{figure}
 
-When the lidar concepts are endowed with extended information and their interrelationships specified, the lidar taxonomy becomes a {\it Lidar Ontology}.
-In addition, the Lidar Ontology is enhanced by the creation of a machine-readable data structure.
-The wrappers sheet2rdf \cite{ref-Fiorelli2015, nikola_vasiljevic_2021_4432136} and Ontostack \cite{ref-OntoStack} have been used to orchestrate the framework necessary to deploy the Lidar Ontology. Their implementation is described in the following section.
+\subsection{Lidar concepts}
+When the lidar concepts are endowed with extended information and their interrelationships specified, the lidar taxonomy becomes a {\it Wind Lidar Ontology}. The Wind Lidar Ontology Working Group, encompassing multi-disciplinary fields of knowledge,
+contributed to the definition of the concepts, the vocabularies, the metadata and the relationships, through intensive
+discussions organised by IEA Wind TCP Task 52.
 
-\subsection{Implementation}
+\subsection{Translation}
+The participants in the working group encompass a wide range of cultural and regional backgrounds,
+facilitating direct translation between multiple European languages and Chinese language by native speakers.
+
+\subsection{Tools and Implementation}
 \label{subsec:implementation}
-The ontology is deployed by means of a combination of several tools, brought together using GitHub Actions \cite{ref-GitActions}, which enable automatic compilation and deployment. The workflow is as follows: 
+The wrappers sheet2rdf \cite{ref-Fiorelli2015, nikola_vasiljevic_2021_4432136} and OntoStack \cite{ref-OntoStack} have been used to orchestrate the framework necessary to deploy the Wind Lidar Ontology. The ontology is deployed by means of a combination of several tools, brought together using GitHub Actions \cite{ref-GitActions}, which enable automatic compilation and deployment. The workflow is as follows: 
 \begin{description}
     
-    \item [Input data sheet:] The input data sheet consists of a Google Sheets spreadsheet stored in Google Drive. The Google sheet is used as the graphical user interface (GUI) to edit the ontology as the GUI simplifies collaboration compared to working on the machine-readable SKOS or RDF formats. The spreadsheet has been populated with the lidar concepts and the related descriptive metadata considered by the authors to be most relevant for the wind lidar community. The source files for the wind Lidar Ontology and the spreadsheet are hosted in the repository  \textit{IEA-Wind-Task-32/wind-lidar-ontology} \cite{TCP32_GitHub_repo}.
+    \item [Input data sheet:] The input data sheet consists of a Google Sheets spreadsheet stored in Google Drive. The Google sheet is used as the graphical user interface (GUI) to edit the ontology as the GUI simplifies collaboration compared to working on the machine-readable SKOS or RDF formats. The spreadsheet has been populated with the lidar concepts and the related descriptive metadata considered by the authors to be most relevant for the wind lidar community. The source files for the Wind Lidar Ontology and the spreadsheet are hosted in the repository  \textit{IEA-Wind-Task-32/wind-lidar-ontology} \cite{TCP32_GitHub_repo}.
     The Google spreadsheet format is read and manipulated by sheet2rdf (see below) and converted to RDF, facilitating use as an online searchable asset. 
     
-    \item [sheet2rdf:] The sheet2rdf \cite{ref-Fiorelli2015, nikola_vasiljevic_2021_4432136} framework builds on the excel2rdf \cite{ref-excel2rdf} workflow, enabling the acquisition and transformation of data sheets into RDF \cite{ref-sheet2rdf}. The specific sheet2rdf instance used in the present work is available in a GitHub repository created by the FAIR Data Collective \cite{ref-FAIRsheet2rdf}. It contains the main functions that enable the conversion of the ontology information in the Google spreadsheet into machine-actionable RDF format, following SKOS standards. The sheet2rdf framework internally evaluates the quality of the SKOS concept scheme using qSKOS \cite{ref-W3C-qSKOS} and deploys the RDF-formatted ontology to OntoStack. 
+    \item [sheet2rdf:] The sheet2rdf \cite{ref-Fiorelli2015, nikola_vasiljevic_2021_4432136} framework builds on the excel2rdf \cite{ref-excel2rdf} workflow, enabling the acquisition and transformation of data sheets into RDF \cite{ref-github-sheet2rdf}. The specific sheet2rdf instance used in the present work is available in a GitHub repository created by the FAIR Data Collective \cite{ref-FAIRsheet2rdf}. It contains the main functions that enable the conversion of the ontology information in the Google spreadsheet into machine-actionable RDF format, following SKOS standards. The sheet2rdf framework internally evaluates the quality of the SKOS concept scheme using qSKOS \cite{ref-W3C-qSKOS} and deploys the RDF-formatted ontology to OntoStack. 
     
     sheet2rdf is a combination of software used to create a configurable automated process allocated as a GitHub Action workflow in \cite{ref-FAIRsheet2rdf}. The workflow can be manually triggered to update changes in the server.
     
-    \item [OntoStack:] The Ontostack framework \cite{ref-OntoStack}  is a set of tools combined for the purpose of handling vocabularies and their RDF properties, such as those yielded by sheet2rdf, and render them in human- and machine-readable formats, and facilitates the deployment and visualisation of the wind Lidar Ontology.
+    \item [OntoStack:] The OntoStack framework \cite{ref-OntoStack}  is a set of tools combined for the purpose of handling vocabularies and their RDF properties, such as those yielded by sheet2rdf, and render them in human- and machine-readable formats, and facilitates the deployment and visualisation of the Wind Lidar Ontology.
     
-    The Lidar Ontology is an instance of OntoStack and its online visualisation is hosted by the Wind and Energy Systems Department, at the Technical University of Denmark (DTU).
+    The Wind Lidar Ontology is an instance of OntoStack and its online visualisation is hosted by the Wind and Energy Systems Department, at the Technical University of Denmark (DTU).
     The wrapper OntoStack gathers functionalities from several tools enumerated here below \cite{ref-github-sheet2rdf}:
     \begin{itemize}
         \item Jena Fuseki \cite{ref-JenaFuseki}: a graph database based on SPARQL, a standard query language and protocol for linked open data on the web \cite{ref-SPARQL} that allows users to store and handle data in RDF format.
-        \item Skosmos \cite{ref-Skosmos}: a web-based tool providing services for accessing CVs.
+        \item Skosmos \cite{ref-Skosmos}: a web-based tool providing services for accessing controlled vocabularies.
         \item Tr\ae fik \cite{ref-Traefik}: an open-source edge router responsible for proper serving of URL requests. 
     \end{itemize}
 \end{description}
@@ -307,32 +327,25 @@ The ontology is deployed by means of a combination of several tools, brought tog
 
 \section{Results}
 \label{sec:Results}
-The details of the Lidar Ontology development procedure are outlined, and the structure and intended uses of the GitHub Ontology Tool are illustrated.
+The details of the Wind Lidar Ontology development procedure are outlined, and the structure and intended uses of the GitHub Wind Lidar Ontology Tool are illustrated.
 
-\subsection{Lidar Ontology}
-Structurally inspired by the OpenLidar Architecture \cite{clifton_andrew_2019_3414197}, this Lidar Ontology reports a dedicated list of concepts and definitions for supporting development of modular tools and processes for wind lidars. The selection and definition of the concepts included in the Lidar Ontology are the results of the joint effort and consensus of wind lidar experts, combining the information that describes the data and its associated metadata in a way that meets the needs and requirements of both academia and industry.
+\subsection{Wind Lidar Ontology}
+Structurally inspired by the OpenLidar Architecture, the Wind Lidar Ontology provides a dedicated list of concepts and definitions for supporting development of modular tools and processes for wind lidars. The selection and definition of the concepts included in the Wind Lidar Ontology are the results of the joint effort and consensus of wind lidar experts, combining the information that describes the data and its associated metadata in a way that meets the needs and requirements of both academia and industry.
 
-%The consolidation of the ontology as it is nowadays took three main phases. The first step was to define the main structure of the ontology. This involved establishing the main nodes and relationships among them. First, second and third Lidar Ontology hierarchical levels are shown in Figure \ref{fig:tax}. Secondly, parent-child relationships among its 268 concepts were fully defined, as well as possible transitive relationships between tuples. Thirdly, lidar concepts were assigned according to authors' expertise to be elaborated and the results of their implementations were exposed, discussed and agreed upon by the members of the ontology group in recurrently scheduled meetings.
+The development of the Wind Lidar Ontology to its current state consisted of three main phases: 
+\begin{enumerate}[]
 
-The development of the Lidar Ontology to its current state consisted of three main phases: 
-\begin{enumerate}[(i)]
+    \item Defining the main structure of the ontology. This involved establishing the main nodes and relationships among them. First, second and third Wind Lidar Ontology hierarchical levels are shown in Figure \ref{fig:tax}. 
 
-    \item Defining the main structure of the ontology. This involved establishing the main nodes and relationships among them. First, second and third Lidar Ontology hierarchical levels are shown in Figure \ref{fig:tax}. 
-
-    \item Parent-child relationships among the 268 concepts were fully defined, as well as possible transitive relationships between tuples.
+    \item Parent-child relationships among the concepts were fully defined, as well as possible transitive relationships between tuples.
 
     \item
-    %Lidar concepts were assigned according to authors' expertise to be elaborated and the results of their implementations were exposed, discussed and agreed upon by the members of the ontology group in recurrently scheduled meetings.
-    Lidar concepts were assigned according to authors' expertise, and the lidar concept definitions and terminology were duly specified. These were subjected to the scrutiny of all members of the ontology group until a consensus was reached.
+    Lidar concepts were assigned according to authors' expertise, and the lidar concept definitions and terminology were duly specified. These were subjected to the scrutiny of all members of the ontology group until a consensus was reached. Native speakers proficient in each language provided the translation from the original English version.
 
 \end{enumerate}
 
-The Lidar Ontology homepage contains information about the title of the ontology, a short description of the Lidar Ontology website and resource counts by type [WHAT IS THIS?]. Hosting for the online deployment is provided by the Technical University of Denmark (DTU) as an ontostack instance in the form of a look-up table \cite{ref-IEA-Wind-Task-32-wind-lidar-ontology}[REF?]. 
-
-
-
-
-
+Hosting for the online deployment is provided by the Technical University of Denmark (DTU) as an OntoStack instance in the form of a look-up table \cite{TCP32_GitHub_repo}.
+The Wind Lidar Ontology homepage includes high-level information about the ontology, as well as direct links to the lidar concepts themselves.
 
 \begin{table}[H] 
 \caption{Information contained in each ontology concept.
@@ -350,7 +363,7 @@ The Lidar Ontology homepage contains information about the title of the ontology
 \hline
 \textbf{Broader/Narrower concept}	& If any, hierarchical relation and link to other broader/narrower terms within the ontology\\
 \hline
-\textbf{Entry terms[IS THIS A GOOD NAME?]}	& Alternative label\\
+\textbf{Alternative label}	& Other possible names for the term\\
 \hline
 \textbf{Editorial note}	&  Additional information about the concept \\
 \hline
@@ -363,53 +376,31 @@ The Lidar Ontology homepage contains information about the title of the ontology
 \bottomrule
 \end{tabularx}
 }
-% \noindent{\footnotesize{\textsuperscript{1} Due to its role and definition, ontology concepts might or might not contain all of the terms in the table}}
 \end{table}
 
-%Users can explore the ontology and its content both alphabetically and hierarchically.
-The Lidar Ontology and its contents may be explored both alphabetically and hierarchically.
-The entries within the online version of the ontology contain the fields included in Table \ref{Ontology_var}. $Entry~terms$ contains information about the $alternative~label$ associated to a lidar concept. Each ontology concept has been unambiguously defined and labelled. The labelling has been aligned with the domain of knowledge (for instance, the $Velocity~azimuth~Display$ concept has been labelled as VAD, as it is commonly referred to within the lidar community) and the resulting $alternative~label$ can serve either for querying information within the framework or to be downloaded and integrated into digital workflows or codes. 
+The Wind Lidar Ontology and its contents may be explored both alphabetically and hierarchically.
+The entries within the online version of the ontology contain the fields included in Table \ref{Ontology_var}. $Alternative~label$ contains information about the alternative names associated to a particular lidar term. Each ontology concept has been unambiguously defined and labelled. The labelling has been aligned with the domain of knowledge (for instance, the $Velocity~azimuth~Display$ concept has been labelled as VAD, as it is commonly referred to within the lidar community) and the resulting alternative label can serve either for querying information within the framework or to be downloaded and integrated into digital workflows or codes. 
 
-Queried information is available for download from the DTU server in three different formats, namely RDF/HTML, Turtle and Json, depending on user preferences.
+Queried information is available for download from the DTU server in three different serialisation formats, namely RDF/HTML, Turtle and Json, depending on user preferences.
 The following subsection presents a python-based in-house method for downloading and coupling ontology terms to external digital workflows. 
 
-% \begin{figure}[h]
-%     \centering
-%     \includegraphics[width=9cm]{Figures/Concept.jpg}
-    
-%     \caption{First, second (Design) and third lidar taxonomy hierarchical levels.}
-%     \label{tax}
-% \end{figure}
-
-
-% - How the ontology looks like 
-% % - Process of how we get there
-% - Talk about the concepts and the fields of each 
-% - Output: RDF or Json
-% - Conclusion of the definitions
-
-
-\subsection{The GitHub Ontology Tool}
+\subsection{The GitHub Wind Lidar Ontology Tool}
 \label{GitTool}
-
-%In the Methodology section, we discussed the process of how we established the wind lidar concepts and terminology based on the feedback from participants from different fields working in wind energy. During these discussions, we developed a tool to ease the application of metadata on data sets and allow standardisation across different application domains in wind energy.
 The wind lidar concepts and terminology were established according to the process outlined in the Methodology section,
-in which opinions were garnered in order to reach a consensus on the content of the Lidar Ontology.
+in which opinions were garnered in order to reach a consensus on the content of the Wind Lidar Ontology.
 At that stage, a tool was developed to enable the application of metadata to data sets and
 allow standardisation across various application domains in wind energy.
-The GitHub Ontology Tool is based on tools developed by the FAIR Data Collective discussed in sub-section \ref{subsec:implementation}, and is openly available at the IEA Wind TCP Task 52 GitHub repository \cite{IEA_Wind_TCP_Task_52_GitHub_repository}.
-%We demonstrate an example using this tool here.
+The GitHub Wind Lidar Ontology Tool is based on tools developed by the FAIR Data Collective discussed in sub-section \ref{subsec:implementation}, and is openly available at the IEA Wind TCP Task 52 GitHub repository \cite{IEA_Wind_TCP_Task_52_GitHub_repository}.
 
-%In order to merge the Lidar Ontology with any application, there are two alternatives. In the first option, one can download specific keywords from the webserver-based Lidar Ontology database in file formats like RDF, Turtle or JSON. In the second option, a database file already existing in the GitHub repository can be accessed and filtered through any programming tool (e.g. Python) for specific keywords. The general workflow for the first option is shown in Figure \ref{Ontology_workflow}, where the data flows from the Ontology server (step 1) to the User application (step 5).
-[IS THIS THE EXAMPLE AT THE END?] An example is presented to illustrate the use of the tool.
-There are two general approaches to extracting the content of the Lidar Ontology for use within external software applications. 
+There are two general approaches to extracting the content of the Wind Lidar Ontology for use within external software applications. 
 \begin{enumerate}[label=(\roman*)]
 
-    \item Download individual specific keywords from the webserver-based Lidar Ontology database in the available file formats: RDF; Turtle; JSON.
+    \item Download individual specific keywords from the webserver-based Wind Lidar Ontology database in the available file formats: RDF; Turtle; JSON.
 
-    \item Directly access the existing Lidar Ontology database file from the GitHub repository. The database may be accessed and filtered through a programming tool, such as Python, for specific keywords.
+    \item Directly access the existing Wind Lidar Ontology database file from the GitHub repository. The database may be accessed and filtered through a programming tool, such as Python, for specific keywords.
 
 \end{enumerate}
+An example is presented to illustrate the use of the tool.
 The general workflow for option (i) is shown in Figure \ref{Ontology_workflow}, where the data flows from the Ontology server (step 1) to the User application (step 5).
 \begin{figure}[h!]
     \centering
@@ -418,44 +409,16 @@ The general workflow for option (i) is shown in Figure \ref{Ontology_workflow}, 
     \label{Ontology_workflow}
 \end{figure}
 \newpage
-The data is fetched from the Lidar Ontology files in a specific language (e.g., English) according to the workflow in Figure \ref{Ontology_workflow}, which is divided into the following five elements:
+The data is fetched from the Wind Lidar Ontology files in a specific language (e.g., English) according to the workflow in Figure \ref{Ontology_workflow}, which is divided into the following five elements:
 \begin{enumerate}
-    \item Search the Lidar Ontology database for a keyword (e.g. VAD).
+    \item Search the Wind Lidar Ontology database for a keyword (e.g. VAD).
     \item Download the concept as RDF, Turtle or JSON file format.
-    \item Extract the desired information from the ontology using the GitHub Ontology Tool on GitHub (User input: language, labels, keyword).
+    \item Extract the desired information from the ontology using the GitHub Wind Lidar Ontology Tool on GitHub (User input: language, labels, keyword).
     \item Store the lidar concept Output and its fields of interest as a python dictionary.
     \item Apply the output (metadata parameters e.g. definition, preferred Label, uri, etc.) to the software application (e.g., lidar simulator or SQL Database).
 \end{enumerate}
 
-The \textit{Ontology Viewer} is a DTU hosted webserver where the concept definitions are stored. The code block \textit{Download an Ontology concept} refers to a user action of searching a keyword, selecting the definition and downloading this definition from the Lidar Ontology Viewer. This process is detailed in the code block shown in Figure \ref{fig:download_concept}. 
-
-% \begin{tcolorbox}
-%     Option A) Workflow block 2:  Download an Ontology concept
-% \begin{python}
-% # Open the file that users download from 
-% #  (https://data.windenergy.dtu.dk/ontologies/view/ontolidar/en/)
-% with open(r'.\Ontology_Concepts\VAD_da', encoding='utf-8') as f:
-%     d = json.load(f)
-
-% print(d)
-% \end{python}
-% \end{tcolorbox}
-
-% \begin{tcolorbox}
-%     Workflow block 2: Download an Ontology concept from json/turtle file
-%     \begin{python}
-% # import the whole concept with main variables from json file
-% path = r'../Ontology_Concepts/VAD_da'
-% lang = "en"
-% concept_json = get_json_concept(path, lang)
-
-% # import the whole concept with main variables from turtle file
-% path = r'../Ontology_Concepts/vad.ttl'
-% lang = "en"
-% fmt = 'ttl'
-% concept_rdf = get_rdf_concept(path, lang, fmt)
-% \end{python}
-% \end{tcolorbox}
+The \textit{Ontology Viewer} is a DTU hosted webserver where the concept definitions are stored. The code block \textit{Download an Ontology concept} refers to a user action of searching a keyword, selecting the definition and downloading this definition from the Wind Lidar Ontology Viewer. This process is detailed in the code block shown in Figure \ref{fig:download_concept}. 
 
 \begin{figure}[htpb!]
     \centering
@@ -464,7 +427,7 @@ The \textit{Ontology Viewer} is a DTU hosted webserver where the concept definit
     \label{fig:download_concept}
 \end{figure}
 
-The code block \textit{GitHub Ontology Tool} represents the python tool developed to extract data from the downloaded definition and making it available for use. The code block \textit{Backend Functions} refers to the python routines that enable the user to fetch definitions.
+The code block \textit{GitHub Wind Lidar Ontology Tool} represents the python tool developed to extract data from the downloaded definition and making it available for use. The code block \textit{Backend Functions} refers to the python routines that enable the user to fetch definitions.
 
 \begin{figure}[htpb!]
     \centering
@@ -473,202 +436,59 @@ The code block \textit{GitHub Ontology Tool} represents the python tool develope
     \label{fig:extract_keys}
 \end{figure}
 
-% \begin{tcolorbox}
-%     Workflow block 3: GitHub tool: Extract data from Ontology
-% \begin{python}
-% # 1) Get definition of the concept
-% from fun.getLabel import getLabel
-% path = r'./Ontology_Concepts/VAD_da'
-% Alternative_Label = getLabel(path, key = "altLabel", lang='en', index_inScheme=1)
+Finally, the block \textit{Output} refers to the output from the fetched data that describes the definition of the Ontology's variable. It is a Python dictionary object, which includes uri, type, alternative and preferred labels, definitions and editorial notes, as shown in Figure \ref{fig:extract_keys}.
 
-% # 2) Get individual key value pairs depending on the key requested
-% Definition = getLabel(path, key="skos:definition", lang='en', index_inScheme=1)
-% Preferred_Label = getLabel(path, key="prefLabel", lang='en', index_inScheme=1)
-% Alternative_Label = getLabel(path, key = "altLabel", lang='en', index_inScheme=1)
-
-% # 3) Save in a new dictionary
-% Lidar_Dictionary['Definition']=Definition
-% Lidar_Dictionary['Preferred Label']=Preferred_Label
-% Lidar_Dictionary['Alternative Label']=Alternative_Label
-% print(Definition)
-% \end{python}
-% \end{tcolorbox}
-
-Finally, the block \textit{Output} refers to the output from the fetched data that describes the definition of the Ontology's variable. It is a dict-like Python object, which includes uri, type, alternative and preferred labels, definitions and editorial notes, as shown in Figure \ref{fig:extract_keys}. The sequence followed by the workflow is shown in Figure \ref{fig:workflow_GHT}. 
- 
-% \begin{tcolorbox}
-%     Workflow block 4: Output data
-% Format of the output data:
-% \begin{python}
-% {'altLabel': 'VAD',
-% 'broader': {'uri': 'http://vocab.ieawindtask32.org/wind-lidar-ontology/WindfieldReconstruction'},
-% 'inScheme': {'uri': 'http://vocab.ieawindtask32.org/wind-lidar-ontology/'},
-% 'prefLabel': 'Velocity-azimuth display',
-% 'skos:definition': 'VAD is a method of analyzing data from a complete '
-%                    'conical scan whereby many closely spaced azimuthal '
-%                    'points may be sampled by the lidar, and the data are '
-%                    'used to estimate the wind speed at each height using a '
-%                    'statistical fitting method.',
-% 'skos:editorialNote': 'The VAD method is described in Lhermitte (1966) and '
-%                       'Browning and Wexler (1968).',
-% 'type': 'skos:Concept',
-% 'uri': 'http://vocab.ieawindtask32.org/wind-lidar-ontology/VelocityAzimuthDisplay'}
-% \end{python}
-% \end{tcolorbox}
-
-%Yet Another Markup Language (YAML) is a human-friendly, machine-readable data serialisation language commonly used for software configuration files. As an example of a Lidar Ontology application, the flowchart in Figure \ref{fig:workflow_GHT} shows how a local YAML file, used as an input file for a lidar simulator, is updated with the information extracted from the ontology. By selecting the concept and the fields we want to edit, the fetched information is incorporated into the local file. The updating process avoids overwriting, preserving any information contained in the local YAML file.
-
-As an example of a Lidar Ontology application, the flowchart in Figure \ref{fig:workflow_GHT} shows how a local YAML (Yet Another Markup Language is a human-friendly, machine-readable data serialisation language) file, used as an input file for a lidar simulator, is updated with the information extracted from the ontology. By selecting the concept and the fields we want to edit, the fetched information is incorporated into the local file. The updating process avoids overwriting, preserving any information contained in the local YAML file.
+As an example of a Wind Lidar Ontology application, the flowchart in Figure \ref{fig:workflow_GHT} shows how a local YAML (Yet Another Markup Language is a human-friendly, machine-readable data serialisation language) file, used as an input file for a lidar simulator, is updated with the information extracted from the ontology. By selecting the concept and the fields to be edited, the fetched information is incorporated into the local file. The updating process avoids overwriting, preserving any information contained in the local YAML file.
 
 \begin{figure}[htpb!]
     \centering
     \includegraphics[width=\textwidth]{Figures/flowchart_GH_Tool.png}
-    \caption{GitHub Ontology Tool flowchart. The information extracted from the ontology is used to update a local YAML file, which in turn is used as input for a lidar simulator.  }
+    \caption{GitHub Wind Lidar Ontology Tool flowchart. The information extracted from the ontology is used to update a local YAML file, which in turn is used as input for a lidar simulator.  }
     \label{fig:workflow_GHT}
 \end{figure}
-% The function  \texttt{edit\_yaml\_from\_ontology.edit}:
-% \begin{enumerate}
-%     \item reads user's lidar input YAML local template and converts it into a python dictionary,
-%     \item finds, within the nested dictionary, concepts and fields aimed to be changed. Concept and targeted fields are introduced by the user. These are contained in the variable \texttt{fields2change}
-%     \item updates the fields in the local template with information extracted from the downloaded ontology concept and saves the changes. The updating process preserves information contained in the local YAML file. 
-    
-% \end{enumerate} 
 
-% \begin{tcolorbox}
-%     Workflow block 5: Application of the Ontology tool for WindSimulator
-%     \begin{python}
-% # Edit local YAML file
-% edit(local_yaml,tag,fields2change,Lidar_Dictionary) 
-
-% def find(obj,tag):
-%     """.   
-%     Function digging into the local YAML file to find 
-%     the fetched concept and the field(s) to be updated:      
-    
-%     Inputs
-%     ------- 
-%     * obj:
-%         Each element contained in the local YAML file
-%     * tag:
-%         Fields of the ontology concept to be updated  
-%     Returns
-%     -------
-%     String    
-%     """
-%     if tag in obj:
-%         yield obj[tag]
-%     for k,v in obj.items():       
-%         if isinstance(v,dict):
-%             for i in find(v,tag):
-%                 yield i                
-
-% def edit(local_yaml,tag,fields2change,Lidar_Dictionary):
-%     """.   
-%     Opens, updates, saves, and closes the local YAML file.    
-    
-%     Inputs
-%     -------    
-%     * local_yaml:
-%         Local YAML file to be updated
-%     * tag:
-%         Concept to be updated   
-%     * fields2change:
-%         Fields to be updated 
-%     * Lidar_Dictionary:
-%         dict-like output object from the GitHub tool
-%     Returns
-%     -------
-%     YAML file    
-%     """
-%     yaml = ruamel.yaml.YAML()    
-%     # Read local YAML file and update the desired fields with the  
-%     # info from the downloaded concept  
-%     with open (local_yaml,"r") as file:
-%         data = yaml.load_all(file)
-%         for obj in data:
-%             for val in find(obj,tag):
-%                 for i in fields2change:
-%                     if not val[i]:
-%                         val[i]=Lidar_Dictionary[i]
-    
-%     # Edit the desired fields of the local file
-%     with open(local_yaml, "w") as file:
-%         yaml.dump(obj, file)
-    
-% \end{python}
-% \end{tcolorbox}
-
-
-
-% \subsection{Examples}
-% Examples
-
-% \subsubsection{Transfer data, tools, and knowledge Open library}
-% Example
-
-% \subsubsection{Standardize input files}
-% Example
-
-% \subsection{Benefits and limitations}
-% Benefits and limitations
 \newpage
 \section{Discussion}
 \label{sec:Discussion}
-This article has given an overview of the development of the Lidar Ontology, which has been developed with the aim of establishing an industry-wide consensus on wind lidar concepts and terminology. 
+This article has given an overview of the development of the Wind Lidar Ontology, which has been developed with the aim of establishing an industry-wide consensus on wind lidar concepts and terminology. 
 
-The Lidar Ontology was developed by garnering opinions from several parties within the wind energy and lidar industry and academic research groups on the relevant subject matter, and subsequent incorporation into an ontology framework. 
+The Wind Lidar Ontology was developed by garnering opinions from several parties within the wind energy and lidar industry and academic research groups on the relevant subject matter, and subsequent incorporation into an ontology framework. 
 An initial ontology structure was proposed and, subsequently, through a series of meetings, a consensus was reached on what should constitute the final concept definitions and terminology.
 A diverse range of viewpoints has ensured that a wide range of concepts and definitions has been captured within the ontology. 
 
-The Lidar Ontology contains more than 200 terms and concepts with definitions, and alternative names where appropriate. In addition, each term definition is given in four languages. 
-% The Lidar Ontology framework has been developed to maximise accessibility through the use of well established standard data structures RDF and the GitHub software platform,
-% The ontology has been made available in RDF data format, which provide a convenient framework to model a CV and define properties, relationships, constraints and axioms among its concepts.
-It is designed to maximize accessibility by utilizing well-established standard data structures such as RDF and the GitHub software platform. The use of RDF in particular makes it an efficient framework for modeling a CV and delineating properties, relationships, constraints, and axioms among its concepts.
+The Wind Lidar Ontology contains more than 200 terms and concepts with definitions, and alternative names where appropriate. In addition, each term definition is given in four languages. 
+It is designed to maximize accessibility by utilizing well-established standard data structures such as RDF and the GitHub software platform. The use of RDF in particular makes it an efficient framework for modeling a controlled vocabulary and delineating properties, relationships, constraints, and axioms among its concepts.
 
-It is anticipated that the lidar community and industry will benefit from the Lidar Ontology.
+It is anticipated that the lidar community and industry will benefit from the Wind Lidar Ontology.
 %\subsection{Benefits and limitations}
-Ontologies can be integrated into other knowledge infrastructure dedicated to information sharing and integration and improve sharing between remote sensing science and the fields of application. Ontologies facilitate opportunities to support interdisciplinary science through better representation and management of scientific knowledge, and wind energy science being fundamentally interdisciplinary, will undoubtedly benefit from such an innovative approach. The Lidar Ontology can be connected to upper level ontologies where possible.
-% An ontology should play an important role in the articulation between knowledge- and data-driven approaches.
-% Procedures to capture the knowledge should be implemented and maintained. 
-% The Lidar Ontology provides many benefits to the lidar community.
+Ontologies can be integrated into other knowledge infrastructure dedicated to information sharing and integration, thereby enhancing the exchange of information between remote sensing science and the fields of application. Ontologies facilitate opportunities to support interdisciplinary science through better representation and management of scientific knowledge, and wind energy science being fundamentally interdisciplinary, will undoubtedly benefit from such an innovative approach. The Wind Lidar Ontology can be connected to upper level ontologies where appropriate.
 
-In addition, the Lidar Ontology provides standardisation of terminology within the lidar knowledge domain, encourages sharing of inter-domain knowledge and re-use of formalised expert domain knowledge with the minimum of ambiguity. The existence of ontologies should support good industry practices within the wind energy community. Moveover, the Lidar Ontology is a versatile framework which has the adaptability to incorporate new concepts and developments within the lidar industry.
-% It is anticipated that the Lidar Ontology will be widely used within both the lidar industry and the wider wind industry.
+In addition, the Wind Lidar Ontology provides standardisation of terminology within the lidar knowledge domain, encourages sharing of inter-domain knowledge and reuse of formalised expert domain knowledge with the minimum of ambiguity. The existence of ontologies should support good industry practices within the wind energy community. Moreover, the Wind Lidar Ontology is a versatile framework which has the adaptability to incorporate new concepts and developments within the lidar industry.
 The concepts and terminology to date have been established based on common usage within the industry over several decades.
-The open-source framework will promote sharing of the Lidar Ontology and increase the possibility of collaboration through modification and enhancement of concepts and terminology. 
-% The Lidar Ontology framework has been developed to maximise accessibility through the use of well established standard data structures such as RDF and the gitHub software platform.
+The open-source framework will promote sharing of the Wind Lidar Ontology and increase the possibility of collaboration through modification and enhancement of concepts and terminology. 
+The Wind Lidar Ontology may be further enhanced by translation of concepts and definitions to additional languages.
 
-Despite these recognised benefits, the possible limitations of the Lidar Ontology must be acknowledged.
+Despite these recognised benefits, the possible limitations of the Wind Lidar Ontology must be acknowledged.
 The software framework may represent a barrier to those users with less experience, and may prove to be difficult to integrate into existing software structures.
-Several ontologies exist within the wind energy industry and there exists the possibility that conflicts may arise in the terminology.
-Additionally, a technological framework such as an ontology requires ownership and maintenance, which requires ongoing commitment in terms of both funding and time dedicated to the Lidar Ontology.
-% This requires a level of funding and time resource dedicated to the Lidar Ontology. 
-
-The utility of an ontology is only as good as its use and familiarity within the community. To ensure this, we are actively promoting the ontology to the wind lidar community via webinars, workshops, and publications like this paper.
-Finally, it's crucial for an ontology to evolve over time. To aid in this process, we welcome updates through the "issues" function on GitHub at \href{https://github.com/IEAWindTask52/Extract-lidar-ontology-concepts/issues}{Extract Lidar Ontology concepts}.
-% Issues and challenges?
-
-% ----------
-% Opportunities and Challenges
-% ----------
-% [AC 20.12.22] introduced new section to replace / capture material from conclusions
+Several ontologies exist within the wind energy industry and there exists the possibility that conflicts may arise in the terminology. Such conflicts would be resolved through joint discussion among relevant parties, and usually through ontology alignment.
+Additionally, a technological framework such as an ontology requires ownership and maintenance, which requires ongoing commitment in terms of both funding and dedicated time.
 
 \section{Outlook}
 \label{sec:Outlook}
-% Carlo and Andy
-    % 1. Keep ontology up to date
-    % 2. Combine with existing wind community ontologies (TASK37)
-The benefits provided to the lidar community by the Lidar Ontology may be enhanced through user engagement and the consolidation of the resulting outcomes, facilitated through the open-source framework.
-It is intended that the Lidar Ontology will be updated upon revision and improvement, the updates being published with appropriate version numbering. There is the opportunity to combine the Lidar Ontology with existing (and forthcoming) wind community ontologies, like the ontology  for Wind Turbines and Plants by IEA Wind TCP Task37 (IEA Wind TCP Task 37 \cite{Task37_web}), or the Ontology for managing data streams by IEA TCP Task43 (IEA Wind TCP Task 43 \cite{Task43_web}).
+The benefits provided to the lidar community by the Wind Lidar Ontology may be enhanced through user engagement and the consolidation of the resulting outcomes, facilitated through the open-source framework.
+It is intended that the Wind Lidar Ontology will be updated upon revision and improvement, the updates being published with appropriate version numbering.
+In order to expand its use, the Wind Lidar Ontology is being actively promoted to the wind lidar community via webinars, workshops, and publications.
+It is anticipated that the wind lidar ontology will evolve over time, and users may submit issues via a
+GitHub url \cite{ref-Extract-Wind-Lidar-Ontology-concepts}.
 
+There exists the opportunity to combine the Wind Lidar Ontology with existing (and forthcoming) wind community ontologies, like the ontology  for Wind Turbines and Plants by IEA Wind TCP Task 37 \cite{Task37_web}, or the Ontology for managing data streams by IEA Wind TCP Task 43 \cite{Task43_web}.
 
-The ontology presents a unique opportunity to engage neutrally with academia and the wind industry to establish data standards, concepts and terminology. The IEA TCP Task 52 working group on Digitization of lidars focuses on this kind of partnership between  research institutions, academia and industry.
-
+The Wind Lidar Ontology presents a promising opportunity to engage neutrally with academia and the wind industry to establish data standards, concepts and terminology. The IEA TCP Task 52 working group on Digitalisation of lidars focuses on this kind of partnership between  research institutions, academia and industry.
 
 \section{Acknowledgments}
 %All participants, collectives and institutions that do not appear in the list of authors.
 The authors would like to thank Nikola Vasiljevi\'{c}, Julia Gottschall, Peter Clive, the IEA Wind TCP Task 32 and Task 52 participants and the FAIR Collective for their contributions to this work.
-The DTU is acknowledged for hosting the Lidar Ontology online.
+The Technical University of Denmark (DTU) is gratefully acknowledged for hosting the Wind Lidar Ontology online.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \vspace{6pt} 
@@ -686,7 +506,7 @@ The DTU is acknowledged for hosting the Lidar Ontology online.
 %For research articles with several authors, a short paragraph specifying their individual contributions must be provided. The following statements should be used ``Conceptualization, X.X. and Y.Y.; methodology, X.X.; software, X.X.; validation, X.X., Y.Y. and Z.Z.; formal analysis, X.X.; investigation, X.X.; resources, X.X.; data curation, X.X.; writing---original draft preparation, X.X.; writing---review and editing, X.X.; visualization, X.X.; supervision, X.X.; project administration, X.X.; funding acquisition, Y.Y. All authors have read and agreed to the published version of the manuscript.'', please turn to the  \href{http://img.mdpi.org/data/contributor-role-instruction.pdf}{CRediT taxonomy} for the term explanation. Authorship must be limited to those who have contributed substantially to the work~reported.
 Conceptualization, F.C., D.L., A.K., A.G., C.R., and A.C.;
 methodology, F.C., D.L., A.K., A.G., C.R., and A.C.;
-software, F.C., D.L. and A.G.; investigation, F.C., D.L., A.K., A.G., C.R., and A.C.;
+software, F.C. and A.G.; investigation, F.C., D.L., A.K., A.G., C.R., and A.C.;
 writing---original draft preparation, F.C., D.L., A.K., A.G., C.R., and A.C.;
 writing---review and editing, F.C., D.L., A.K., A.G., C.R., and A.C.;
 All authors have read and agreed to the published version of the manuscript.
@@ -703,7 +523,7 @@ All authors have read and agreed to the published version of the manuscript.
 %Written informed consent for publication must be obtained from participating patients who can be identified (including by the patients themselves). Please state ``Written informed consent has been obtained from the patient(s) to publish this paper'' if applicable.}
 
 
-\dataavailability{The Lidar Ontology viewer is available at:  \href{https://data.windenergy.dtu.dk/ontologies/view/ontolidar/en/}{Lidar Ontology viewer}. The GitHub Ontology Tool is available on GitHub under: \href{https://github.com/PacoCosta/Extract-lidar-ontology-concepts}{GitHub Ontology Tool}.} 
+\dataavailability{The Wind Lidar Ontology viewer is available at:  \href{https://data.windenergy.dtu.dk/ontologies/view/ontolidar/en/}{Wind Lidar Ontology viewer}. The GitHub Wind Lidar Ontology Tool is available on GitHub under: \href{https://github.com/PacoCosta/Extract-lidar-ontology-concepts}{GitHub Wind Lidar Ontology Tool}.} 
 % \dataavailability{In this section, please provide details regarding where data supporting reported results can be found, including links to publicly archived datasets analyzed or generated during the study. Please refer to suggested Data Availability Statements in section ``MDPI Research Data Policies'' at \url{https://www.mdpi.com/ethics}. If the study did not report any data, you might add ``Not applicable'' here.} 
 
 
